@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diensten — 123bouwwebsite.nl</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.hero-pricing{padding:52px 48px 48px;text-align:center;position:relative;overflow:hidden;background:radial-gradient(ellipse 60% 60% at 50% 0%,rgba(240,98,10,0.08),transparent 70%),linear-gradient(180deg,var(--navy) 0%,var(--navy2) 100%)}
+.hero-pricing .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.018) 1px,transparent 1px);background-size:48px 48px;-webkit-mask-image:radial-gradient(ellipse 70% 80% at 50% 0%,black,transparent);mask-image:radial-gradient(ellipse 70% 80% at 50% 0%,black,transparent)}
+.pricing-section{padding:52px 48px 64px;background:var(--navy2)}
+.pricing-grid{display:grid;grid-template-columns:1fr 1.08fr 1fr;gap:0;align-items:stretch;max-width:1040px;margin:0 auto}
+.p-card{background:var(--navy3);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:32px 28px;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.p-card:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(0,0,0,0.35)}
+.p-card.popular{background:linear-gradient(160deg,#0F1E32,#152436,#111D2E);border:1.5px solid rgba(240,98,10,0.35);border-radius:20px;z-index:2;margin:-8px 0;padding:40px 32px;box-shadow:0 12px 48px rgba(240,98,10,0.15)}
+.p-card.popular:hover{transform:translateY(-6px);box-shadow:0 24px 64px rgba(240,98,10,0.22)}
+.pop-badge{position:absolute;top:-16px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;padding:5px 16px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.5px;display:flex;align-items:center;gap:5px;white-space:nowrap;box-shadow:0 4px 14px rgba(240,98,10,0.4)}
+.pop-badge::before{content:'★';font-size:10px}
+.p-tier{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.p-name{font-family:var(--serif);font-size:24px;color:#fff;margin-bottom:6px}
+.p-card.popular .p-name{font-size:27px}
+.p-desc{font-size:12px;color:var(--pale);line-height:1.55;margin-bottom:22px;font-weight:300}
+.p-price-wrap{margin-bottom:22px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.p-price{display:flex;align-items:baseline;gap:3px;margin-bottom:4px}
+.p-currency{font-size:19px;font-weight:600;color:#fff;margin-top:4px}
+.p-amount{font-family:var(--serif);font-size:44px;color:#fff;line-height:1}
+.p-card.popular .p-amount{font-size:50px;color:var(--orange2)}
+.p-card.premium .p-amount{color:#fff}
+.p-period{font-size:12px;color:var(--pale);margin-left:3px;font-weight:300}
+.p-note{font-size:11px;color:var(--muted);font-style:italic}
+.p-features{list-style:none;display:flex;flex-direction:column;gap:9px;flex:1;margin-bottom:22px}
+.p-features li{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--light);line-height:1.45}
+.pf-chk{width:16px;height:16px;border-radius:50%;flex-shrink:0;margin-top:1px;background:rgba(240,98,10,0.14);border:1px solid rgba(240,98,10,0.28);display:flex;align-items:center;justify-content:center}
+.p-card.popular .pf-chk{background:rgba(240,98,10,0.2);border-color:rgba(240,98,10,0.5)}
+.pf-chk svg{width:8px;height:8px;stroke:var(--orange);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.p-testimonial{font-size:11px;color:var(--muted);font-style:italic;margin-bottom:16px;padding:10px 12px;border-left:2px solid rgba(240,98,10,0.3);background:rgba(240,98,10,0.04);border-radius:0 6px 6px 0}
+.p-cta{display:block;text-align:center;text-decoration:none;padding:13px 20px;border-radius:8px;font-size:13px;font-weight:600;border:1px solid rgba(255,255,255,0.14);color:var(--light);transition:all .2s;margin-top:auto}
+.p-cta:hover{border-color:rgba(255,255,255,0.3);color:#fff;transform:translateY(-1px)}
+.p-cta.primary{background:var(--orange);color:#fff;border-color:transparent;box-shadow:0 4px 16px rgba(240,98,10,0.3)}
+.p-cta.primary:hover{background:var(--orange2)}
+.p-cta.dark{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.1);color:#fff}
+.guarantee{background:var(--navy3);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:26px 32px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px;max-width:1040px;margin-left:auto;margin-right:auto}
+.gu-item{display:flex;align-items:center;gap:12px}
+.gu-icon{width:36px;height:36px;border-radius:8px;background:rgba(240,98,10,0.1);border:1px solid rgba(240,98,10,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.gu-icon svg{width:15px;height:15px;stroke:var(--orange);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.gu-text{font-size:12px;font-weight:600;color:#fff;line-height:1.3}
+.gu-sub{font-size:11px;color:var(--pale);margin-top:1px}
+.faq-section{padding:56px 48px;background:var(--navy)}
+.faq-max{max-width:700px;margin:0 auto}
+.faq-item{border-bottom:1px solid rgba(255,255,255,0.07);padding:17px 0}
+.faq-q{font-size:14px;font-weight:600;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;user-select:none}
+.faq-q svg{width:15px;height:15px;stroke:var(--orange);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;transition:transform .25s}
+.faq-q.open svg{transform:rotate(45deg)}
+.faq-a{font-size:13px;color:var(--pale);line-height:1.7;font-weight:300;max-height:0;overflow:hidden;transition:max-height .35s ease,margin .25s}
+.faq-a.open{max-height:180px;margin-top:10px}
+.cta-band{margin:0 48px 52px;background:linear-gradient(135deg,#0F1E32,#152436);border:1px solid rgba(240,98,10,0.2);border-radius:16px;padding:40px 48px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+.cta-band h3{font-family:var(--serif);font-size:clamp(20px,2.5vw,28px);color:#fff;margin-bottom:5px}
+.cta-band p{font-size:13px;color:var(--pale);font-weight:300}
+.cta-band-btns{display:flex;gap:12px;flex-shrink:0}
+
+/* ── BEAUTIFUL MOBILE OVERRIDES ── */
+@media(max-width:768px){
+  section.sec, .sec{padding:48px 20px !important}
+  .hero-center,.hero-section{padding:44px 20px 36px !important}
+  /* Hero text only */
+  .hero-inner,.hero-two-col{display:flex !important;flex-direction:column !important;gap:0 !important}
+  .hero-device-col,.mock-wrap{display:none !important}
+  /* Process vertical */
+  .process-grid{display:flex !important;flex-direction:column !important;gap:0 !important;margin-top:24px !important}
+  .process-grid::before{display:none !important}
+  .step{display:flex !important;text-align:left !important;align-items:flex-start !important;gap:16px !important;padding-bottom:24px !important}
+  .step:not(:last-child)::after{content:'';position:absolute;left:30px;top:62px;bottom:0;width:1px;background:rgba(240,98,10,0.2)}
+  .snum{margin:0 !important;flex-shrink:0 !important}
+  .step > div:last-child{padding-top:10px}
+  /* CTA wrap */
+  .cta-wrap,.cta-two-col,.contact-wrap{grid-template-columns:1fr !important}
+  .cta-left,.cta-l,.cl{padding:28px 20px !important}
+  .cta-right,.cta-r,.cr{padding:24px 20px !important}
+  /* Banners */
+  .cta-banner,.cta-simple{flex-direction:column !important;padding:28px 20px !important;gap:18px !important}
+  .cta-btns{flex-direction:column !important;width:100% !important;gap:10px !important}
+  .cta-btns a{width:100% !important;justify-content:center !important}
+  /* Contact page */
+  .contact-main{grid-template-columns:1fr !important;gap:20px !important}
+  /* Featured case */
+  .feat-case{grid-template-columns:1fr !important;gap:20px !important}
+  /* Cases */
+  .cases-grid{grid-template-columns:1fr !important}
+  /* Reviews */
+  .reviews-grid{grid-template-columns:1fr !important}
+  /* Transform */
+  .transform-grid,.tg{grid-template-columns:1fr !important;gap:12px !important}
+  /* Waarom */
+  .waarom-grid{grid-template-columns:1fr !important;gap:24px !important}
+  /* Aanpak desktop grid */
+  .aanpak-grid{grid-template-columns:1fr 1fr !important}
+  /* Guarantee */
+  .guarantee,.trust-grid{grid-template-columns:1fr 1fr !important;gap:10px !important}
+  /* Stats */
+  .stats-grid{grid-template-columns:1fr 1fr !important}
+  /* Pricing */
+  .pricing-grid{grid-template-columns:1fr !important;gap:16px !important}
+  .p-card.popular{margin:0 !important;padding:32px 22px !important}
+  /* Forms */
+  .form-row,.frow{grid-template-columns:1fr !important}
+  .fi{padding:14px !important;font-size:14px !important;border-radius:10px !important}
+  textarea.fi{height:90px !important}
+  .fsub{padding:16px !important;font-size:15px !important;border-radius:12px !important}
+  /* Buttons */
+  .btns,.hero-btns{flex-direction:column !important;gap:10px !important}
+  .btns a, .hero-btns a, .hero-btns .btn-p, .hero-btns .btn-s{width:100% !important;justify-content:center !important}
+  /* Footer */
+  .footer-grid{display:flex !important;flex-direction:column !important;gap:0 !important;margin-bottom:0 !important}
+  .footer-grid > div:first-child{padding:36px 20px 24px !important}
+  .footer-col{padding:20px 20px !important;border-bottom:1px solid rgba(255,255,255,0.06) !important}
+  .footer-col a{padding:9px 0 !important;font-size:14px !important;border-bottom:1px solid rgba(255,255,255,0.04) !important;display:flex !important;align-items:center !important;justify-content:space-between !important}
+  .footer-col a::after{content:'›' !important;color:var(--muted) !important;font-size:18px !important}
+  .footer-bottom{padding:20px !important;flex-direction:column !important;gap:10px !important;text-align:center !important}
+  .footer-links{justify-content:center !important}
+}
+@media(max-width:480px){
+  section.sec,.sec{padding:40px 16px !important}
+  .aanpak-grid{grid-template-columns:1fr !important}
+  .guarantee,.trust-grid{grid-template-columns:1fr !important}
+}
+
+</style>
+</head>
+<body>
+<div id="scroll-bar"></div><div id="cursor-glow"></div><div id="section-pill">Pakketten</div>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 28 28"><path d="M14 3L4 10v15h8v-7h4v7h8V10L14 3z"/></svg>
+    <div class="nav-brand"><span>123</span>bouwwebsite<span>.nl</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="diensten.html" class="active">Diensten</a></li>
+    <li><a href="cases.html">Cases</a></li>
+    <li><a href="over-ons.html">Over ons</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-menu-btn" aria-label="Menu"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <a href="contact.html" class="nav-cta">Gratis advies →</a>
+</nav>
+<div class="nav-drawer">
+  <div class="drawer-header">
+    <a href="index.html" class="drawer-logo"><svg viewBox="0 0 28 28"><path d="M14 3L4 10v15h8v-7h4v7h8V10L14 3z"/></svg><div class="drawer-brand"><span>123</span>bouwwebsite<span>.nl</span></div></a>
+    <button class="drawer-close"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+  <div class="drawer-links">
+    <a href="index.html">Home</a>
+    <a href="diensten.html" class="active">Diensten</a>
+    <a href="cases.html">Cases</a>
+    <a href="over-ons.html">Over ons</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="drawer-cta-wrap"><a href="contact.html" class="drawer-cta">Gratis advies aanvragen →</a></div>
+</div>
+
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="diensten.html" class="active">Diensten</a></li>
+    <li><a href="cases.html">Cases</a></li>
+    <li><a href="over-ons.html">Over ons</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-menu-btn" aria-label="Menu"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <a href="contact.html" class="nav-cta">Gratis advies →</a>
+</nav>
+<div class="nav-drawer">
+  <a href="index.html">Home</a>
+  <a href="diensten.html" class="active">Diensten</a>
+  <a href="cases.html">Cases</a>
+  <a href="over-ons.html">Over ons</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="drawer-cta">Gratis advies aanvragen →</a>
+</div>
+
+<section class="hero-pricing" data-section="Pakketten">
+  <div class="hero-grid"></div>
+  <div style="position:relative;z-index:1;max-width:640px;margin:0 auto">
+    <span class="stag">Pakketten</span>
+    <h1 class="sec-h">Heldere pakketten,<br><span style="color:var(--orange);font-style:italic">geen verrassingen.</span></h1>
+    <p class="sec-sub" style="margin:0 auto">Kies het pakket dat past bij jouw bedrijf. Elke website is conversiegericht, snel en speciaal gemaakt voor de bouw.</p>
+  </div>
+</section>
+
+<section class="pricing-section" data-section="Pakketten">
+  <div style="max-width:1140px;margin:0 auto">
+    <div class="pricing-grid reveal">
+      <div class="p-card">
+        <div class="p-tier">Starter</div>
+        <div class="p-name">Snel online</div>
+        <p class="p-desc">Voor wie eindelijk professioneel online wil staan.</p>
+        <div class="p-price-wrap">
+          <div class="p-price"><span class="p-currency">€</span><span class="p-amount">599</span></div>
+          <div class="p-period">eenmalig</div>
+          <div class="p-note">Hosting niet inbegrepen</div>
+        </div>
+        <ul class="p-features">
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>3 pagina's (Home, Diensten, Contact)</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Mobielvriendelijk en snel</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Contactformulier</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>WhatsApp-knop</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Online in 5 werkdagen</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Teksten via vragenlijst</li>
+        </ul>
+        <a href="contact.html" class="p-cta">Ik wil dit pakket →</a>
+      </div>
+      <div class="p-card popular" style="position:relative">
+        <div class="pop-badge">Meest gekozen</div>
+        <div class="p-tier">Aanbevolen</div>
+        <div class="p-name">Vakman</div>
+        <p class="p-desc">Voor wie online net zo sterk wil overkomen als op de werkvloer.</p>
+        <div class="p-price-wrap">
+          <div class="p-price"><span class="p-currency">€</span><span class="p-amount">899</span></div>
+          <div class="p-period">eenmalig</div>
+          <div class="p-note" style="visibility:hidden">—</div>
+        </div>
+        <ul class="p-features">
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>5 pagina's inclusief projectenpagina</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Mobielvriendelijk en snel</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Contactformulier én WhatsApp-knop</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Offerteformulier op maat</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Google Bedrijfsprofiel aangemaakt</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Online in 5 werkdagen</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>30 dagen gratis kleine aanpassingen</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Eerste jaar hosting inbegrepen</li>
+        </ul>
+        <div class="p-testimonial">"Binnen 3 dagen al de eerste aanvraag." — Mark J., Bouwbedrijf Jansen</div>
+        <a href="contact.html" class="p-cta primary">Ik wil dit pakket →</a>
+      </div>
+      <div class="p-card premium">
+        <div class="p-tier" style="color:var(--pale)">Premium</div>
+        <div class="p-name">Volledig ontzorgd</div>
+        <p class="p-desc">Voor wie nergens meer over wil nadenken. Het complete pakket.</p>
+        <div class="p-price-wrap">
+          <div class="p-price"><span class="p-currency" style="color:var(--orange)">€</span><span class="p-amount" style="color:var(--orange)">1.199</span></div>
+          <div class="p-period">eenmalig</div>
+          <div class="p-note" style="visibility:hidden">—</div>
+        </div>
+        <ul class="p-features">
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>7 pagina's incl. projecten en over ons</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Mobielvriendelijk en snel</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Formulier, WhatsApp én offerteformulier</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Google Bedrijfsprofiel volledig ingesteld</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Omslagfoto voor Facebook en Instagram</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Online in 7 werkdagen</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>60 dagen gratis kleine aanpassingen</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Jaarlijkse gratis websitecheck</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Eerste jaar hosting inbegrepen</li>
+        </ul>
+        <div class="p-testimonial">"Echt nergens naar omgekeken." — Peter G., Installatie Groep Noord</div>
+        <a href="contact.html" class="p-cta dark">Ik wil dit pakket →</a>
+      </div>
+    </div>
+    <div class="guarantee reveal">
+      <div class="gu-item"><div class="gu-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="gu-text">100% vrijblijvend</div><div class="gu-sub">Geen verplichtingen</div></div></div>
+      <div class="gu-item"><div class="gu-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="gu-text">Binnen 24 uur reactie</div><div class="gu-sub">Altijd bereikbaar</div></div></div>
+      <div class="gu-item"><div class="gu-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div><div class="gu-text">Online in 5–7 werkdagen</div><div class="gu-sub">Gegarandeerd</div></div></div>
+      <div class="gu-item"><div class="gu-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div><div class="gu-text">Persoonlijke begeleiding</div><div class="gu-sub">Direct met Jordy</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section reveal" data-section="FAQ">
+  <div class="faq-max">
+    <div style="text-align:center;margin-bottom:36px">
+      <span class="stag">Veelgestelde vragen</span>
+      <h2 class="sec-h">Alles over de pakketten</h2>
+    </div>
+    <div class="faq-item"><div class="faq-q">Wat zit er precies in het pakket?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div class="faq-a">Elk pakket bevat een volledig responsieve website op maat. Wij verzorgen het ontwerp, de teksten (via vragenlijst), de technische opbouw en de lancering. Je hoeft nergens naar om te kijken.</div></div>
+    <div class="faq-item"><div class="faq-q">Kan ik later upgraden naar een groter pakket?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div class="faq-a">Ja, dat is altijd mogelijk. We bespreken de meerkosten eerlijk en transparant. Je betaalt alleen het verschil — geen verrassingen achteraf.</div></div>
+    <div class="faq-item"><div class="faq-q">Hoe snel is mijn website online?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div class="faq-a">Bij Snel online en Vakman garanderen we online in 5 werkdagen na ontvangst van de ingevulde vragenlijst. Bij Volledig ontzorgd rekenen we 7 werkdagen vanwege de extra omvang.</div></div>
+    <div class="faq-item"><div class="faq-q">Wat kost hosting na het eerste jaar?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div class="faq-a">Bij Vakman en Volledig ontzorgd is het eerste jaar hosting inbegrepen. Daarna €19,95 per maand voor hosting, onderhoud en bereikbaarheid. Bij Snel online is hosting niet inbegrepen.</div></div>
+    <div class="faq-item"><div class="faq-q">Moet ik zelf teksten aanleveren?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div class="faq-a">Nee. We sturen je een korte vragenlijst — jij vult die in wanneer het jou uitkomt. Wij schrijven vervolgens de teksten voor jouw website, gericht op jouw klanten en regio.</div></div>
+  </div>
+</section>
+
+<div class="cta-band reveal" data-section="Contact">
+  <div><h3>Nog niet zeker welk pakket past?</h3><p>Plan een gratis kennismakingsgesprek. Wij denken met je mee — vrijblijvend.</p></div>
+  <div class="cta-band-btns"><a href="contact.html" class="btn-p">Plan een gesprek →</a><a href="cases.html" class="btn-s">Bekijk cases</a></div>
+</div>
+
+<footer>
+  <div class="fg2"><div><div class="fbrand"><span>123</span>bouwwebsite<span>.nl</span></div><p class="ftagline">De websitespecialist voor bouw- en klusbedrijven.<br>Geen gedoe, gewoon goed geregeld.</p><div class="fsoc"><a href="#" class="sb">f</a><a href="#" class="sb">in</a><a href="#" class="sb">ig</a></div></div><div class="fcol"><h4>Navigatie</h4><a href="index.html">Home</a><a href="diensten.html">Diensten</a><a href="cases.html">Cases</a><a href="over-ons.html">Over ons</a><a href="contact.html">Contact</a></div><div class="fcol"><h4>Diensten</h4><a href="diensten.html">Websites laten maken</a><a href="diensten.html">Website verbeteren</a></div><div class="fcol"><h4>Contact</h4><div class="fci"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.09 6.09l1.95-1.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>06 18 80 25 51</div><div class="fci"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@123bouwwebsite.nl</div></div></div>
+  <div class="fbot"><div class="fcopy">© 2026 123bouwwebsite.nl — Alle rechten voorbehouden</div><div class="flinks"><a href="#">Privacyverklaring</a><a href="#">Algemene voorwaarden</a></div></div>
+</footer>
+<div class="chat-float"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><div class="chat-dot"></div></div>
+<script src="shared.js"></script>
+</body>
+</html>

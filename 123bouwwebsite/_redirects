@@ -1,0 +1,8 @@
+# Redirect clean URLs to HTML files
+/diensten    /diensten.html    200
+/cases       /cases.html       200
+/over-ons    /over-ons.html    200
+/contact     /contact.html     200
+
+# Fallback — stuur 404 naar index
+/*           /index.html       404
