@@ -50,6 +50,49 @@ document.addEventListener('DOMContentLoaded', () => {
     counters.forEach(c => cObs.observe(c));
   }
 
+  // 4b. Cases — stats under "Cijfers die het verschil maken" (IntersectionObserver, runs once)
+  const casesStatsSection = document.querySelector('section.stats-bar');
+  if (casesStatsSection) {
+    const statNums = casesStatsSection.querySelectorAll('.stats-grid .stat-num[data-countup]');
+    if (statNums.length) {
+      const easeOut = (t) => 1 - Math.pow(1 - t, 4);
+      const duration = 2200;
+      const staggerMs = 70;
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          obs.unobserve(entry.target);
+          statNums.forEach((el, i) => {
+            const target = parseFloat(el.getAttribute('data-countup'), 10);
+            const decimal = el.dataset.decimal === 'true';
+            const prefix = el.dataset.prefix || '';
+            const suffix = el.dataset.suffix || '';
+            setTimeout(() => {
+              let start = null;
+              const step = (ts) => {
+                if (!start) start = ts;
+                const p = Math.min((ts - start) / duration, 1);
+                const eased = easeOut(p) * target;
+                if (p >= 1) {
+                  el.textContent = decimal
+                    ? prefix + target.toFixed(1) + suffix
+                    : prefix + String(Math.round(target)) + suffix;
+                  return;
+                }
+                el.textContent = decimal
+                  ? prefix + eased.toFixed(1) + suffix
+                  : prefix + String(Math.floor(eased)) + suffix;
+                requestAnimationFrame(step);
+              };
+              requestAnimationFrame(step);
+            }, i * staggerMs);
+          });
+        });
+      }, { threshold: 0.2, rootMargin: '0px 0px -5% 0px' });
+      obs.observe(casesStatsSection);
+    }
+  }
+
   // 5. Scroll reveal
   const revObs = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
