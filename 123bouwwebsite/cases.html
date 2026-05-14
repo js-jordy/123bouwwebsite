@@ -17,9 +17,9 @@
 .ms-lines{display:flex;flex-direction:column;gap:6px}
 .ms-line{height:5px;background:rgba(255,255,255,0.07);border-radius:3px}
 .ms-img{height:80px;background:linear-gradient(120deg,#162035,#1E3050);border-radius:6px;border:1px solid rgba(255,255,255,0.06);margin-top:12px}
-.stat-bubble{position:absolute;bottom:-16px;right:-16px;background:var(--orange);color:#fff;padding:14px 18px;border-radius:12px;box-shadow:0 8px 24px rgba(240,98,10,0.4);text-align:center}
-.sb-num{font-family:var(--serif);font-size:26px;font-weight:700;line-height:1}
-.sb-label{font-size:10px;font-weight:500;opacity:.9;margin-top:3px}
+.stat-bubble{position:absolute;bottom:-12px;right:-12px;background:rgba(11,22,38,0.92);backdrop-filter:blur(10px);border:1px solid rgba(240,98,10,0.28);padding:12px 16px;border-radius:10px;box-shadow:0 6px 22px rgba(0,0,0,0.32);text-align:center}
+.sb-num{font-family:var(--serif);font-size:22px;font-weight:700;line-height:1;color:var(--orange)}
+.sb-label{font-size:10px;font-weight:500;margin-top:4px;color:var(--pale);line-height:1.35}
 .filter-bar{padding:20px 48px;background:var(--navy2);border-bottom:1px solid rgba(255,255,255,0.06);position:sticky;top:66px;z-index:50}
 .filter-inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .filter-btn{padding:7px 16px;border-radius:100px;font-size:12px;font-weight:500;border:1px solid rgba(255,255,255,0.1);color:var(--pale);background:transparent;cursor:pointer;transition:all .2s;white-space:nowrap;font-family:var(--sans)}
@@ -45,7 +45,7 @@
 .feat-quote{border-left:3px solid var(--orange);padding-left:14px;margin-top:16px}
 .feat-quote p{font-size:13px;color:var(--pale);font-style:italic;line-height:1.65;margin-bottom:5px}
 .feat-quote cite{font-size:11px;color:var(--muted);font-style:normal}
-.cases-section{padding:48px 48px;background:var(--navy2)}
+.cases-section{padding:48px 48px 56px;background:var(--navy2)}
 .cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1140px;margin:0 auto}
 .case-card{background:var(--navy3);border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s;cursor:pointer}
 .case-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.35);border-color:rgba(240,98,10,0.2)}
@@ -60,15 +60,7 @@
 .case-stat{font-size:13px;color:var(--orange);font-weight:600;margin-bottom:10px}
 .case-link{font-size:12px;color:var(--pale);text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:color .2s,gap .2s}
 .case-link:hover{color:var(--orange2);gap:8px}
-.stats-bar{padding:52px 48px;background:var(--steel)}
-.stats-bar-inner{max-width:1140px;margin:0 auto}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
-.stat-item{text-align:center;padding:28px 20px}
-.stat-icon{width:36px;height:36px;border-radius:8px;background:rgba(240,98,10,0.12);border:1px solid rgba(240,98,10,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
-.stat-icon svg{width:16px;height:16px;stroke:var(--orange);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.stat-num{font-family:var(--serif);font-size:36px;color:var(--orange);font-weight:700;line-height:1}
-.stat-label{font-size:11px;color:var(--pale);margin-top:6px}
-.reviews-section{padding:52px 48px;background:var(--navy2)}
+.reviews-section{padding:56px 48px 52px;background:var(--navy2)}
 .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
 .review-card{background:var(--navy3);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:24px;transition:border-color .25s}
 .review-card:hover{border-color:rgba(240,98,10,0.2)}
@@ -115,8 +107,6 @@
   .aanpak-grid{grid-template-columns:1fr 1fr !important}
   /* Guarantee */
   .guarantee,.trust-grid{grid-template-columns:1fr 1fr !important;gap:10px !important}
-  /* Stats */
-  .stats-grid{grid-template-columns:1fr 1fr !important}
   /* Pricing */
   .pricing-grid{grid-template-columns:1fr !important;gap:16px !important}
   .p-card.popular{margin:0 !important;padding:32px 22px !important}
@@ -189,7 +179,7 @@
         <div class="mock-bar"><div class="md" style="background:#FF5F57"></div><div class="md" style="background:#FEBC2E"></div><div class="md" style="background:#28C840"></div></div>
         <div class="mock-screen"><div class="ms-bar"></div><div class="ms-lines"><div class="ms-line" style="width:70%"></div><div class="ms-line" style="width:50%"></div></div><div class="ms-img"></div></div>
       </div>
-      <div class="stat-bubble"><div class="sb-num">+<span data-countup="124" data-suffix="%">0%</span></div><div class="sb-label">meer aanvragen gemiddeld</div></div>
+      <div class="stat-bubble"><div class="sb-num">+87%</div><div class="sb-label">meer aanvragen gemiddeld</div></div>
     </div>
   </div>
 </section>
@@ -236,18 +226,6 @@
     <div class="case-card reveal" data-cat="stukadoor"><div class="case-img"><div class="case-img-inner"><div class="case-img-bar"></div><div class="case-img-lines"><div class="case-img-line" style="width:60%"></div><div class="case-img-line" style="width:40%"></div></div></div><div class="case-cat">Stukadoor</div></div><div class="case-body"><div class="case-name">Stukadoorsbedrijf Ahmed</div><div class="case-stat">+121% meer websitebezoeken</div><a href="#" class="case-link">Bekijk case →</a></div></div>
     <div class="case-card reveal" data-cat="dakdekker"><div class="case-img"><div class="case-img-inner"><div class="case-img-bar"></div><div class="case-img-lines"><div class="case-img-line" style="width:80%"></div><div class="case-img-line" style="width:55%"></div></div></div><div class="case-cat">Dakdekker</div></div><div class="case-body"><div class="case-name">Van Dam Dakwerken</div><div class="case-stat">+87% meer aanvragen</div><a href="#" class="case-link">Bekijk case →</a></div></div>
     <div class="case-card reveal" data-cat="aannemer"><div class="case-img"><div class="case-img-inner"><div class="case-img-bar"></div><div class="case-img-lines"><div class="case-img-line" style="width:50%"></div><div class="case-img-line" style="width:70%"></div></div></div><div class="case-cat">Aannemer</div></div><div class="case-body"><div class="case-name">Bouwgroep Visser</div><div class="case-stat">+113% meer conversie</div><a href="#" class="case-link">Bekijk case →</a></div></div>
-  </div>
-</section>
-
-<section class="stats-bar" data-section="Resultaten">
-  <div class="stats-bar-inner">
-    <div style="text-align:center;margin-bottom:36px"><span class="stag">Resultaten</span><h2 class="sec-h">Cijfers die het verschil maken</h2></div>
-    <div class="stats-grid">
-      <div class="stat-item"><div class="stat-icon"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><div class="stat-num" data-countup="187" data-prefix="+" data-suffix="%">+0%</div><div class="stat-label">meer offerteaanvragen</div></div>
-      <div class="stat-item"><div class="stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><div class="stat-num" data-countup="64" data-prefix="+" data-suffix="%">+0%</div><div class="stat-label">meer mobiel verkeer</div></div>
-      <div class="stat-item"><div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div class="stat-num" data-countup="1.2" data-suffix="s" data-decimal="true">0s</div><div class="stat-label">gemiddelde laadtijd</div></div>
-      <div class="stat-item"><div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="stat-num" data-countup="43" data-prefix="+" data-suffix="%">+0%</div><div class="stat-label">meer vertrouwen</div></div>
-    </div>
   </div>
 </section>
 
