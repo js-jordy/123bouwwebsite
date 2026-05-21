@@ -61,15 +61,46 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(r => revObs.observe(r));
 
-  // 6. FAQ
-  document.querySelectorAll('.faq-q').forEach(q => {
+  // 6. FAQ — smooth height accordion
+  const closeFaq = (item) => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    if (!q || !a) return;
+    q.classList.remove('open');
+    a.classList.remove('open');
+    a.style.maxHeight = '0px';
+  };
+
+  const openFaq = (item) => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    if (!q || !a) return;
+    q.classList.add('open');
+    a.classList.add('open');
+    a.style.maxHeight = a.scrollHeight + 'px';
+  };
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    if (!q || !a) return;
+    a.style.maxHeight = '0px';
     q.addEventListener('click', () => {
-      const a = q.nextElementSibling, isOpen = a.classList.contains('open');
-      document.querySelectorAll('.faq-a').forEach(x => x.classList.remove('open'));
-      document.querySelectorAll('.faq-q').forEach(x => x.classList.remove('open'));
-      if (!isOpen) { a.classList.add('open'); q.classList.add('open'); }
+      const isOpen = q.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(closeFaq);
+      if (!isOpen) openFaq(item);
     });
   });
+
+  window.addEventListener('resize', () => {
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const q = item.querySelector('.faq-q');
+      const a = item.querySelector('.faq-a');
+      if (q && a && q.classList.contains('open')) {
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  }, { passive: true });
 
   // 7. Mobile nav — beautiful full-screen drawer
   const menuBtn = document.querySelector('.nav-menu-btn');

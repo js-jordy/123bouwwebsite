@@ -9,7 +9,7 @@
 .hero-over .hg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.018) 1px,transparent 1px);background-size:48px 48px;-webkit-mask-image:radial-gradient(ellipse 70% 80% at 20% 50%,black,transparent);mask-image:radial-gradient(ellipse 70% 80% at 20% 50%,black,transparent)}
 .hero-glow{position:absolute;top:-100px;right:-80px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(240,98,10,0.07),transparent 70%);pointer-events:none}
 .hero-over-inner{position:relative;z-index:1;max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.founder-card{background:var(--navy3);border:1px solid rgba(255,255,255,0.09);border-radius:20px;padding:32px;position:relative;overflow:hidden}
+.founder-card{border-radius:20px;padding:32px;position:relative;overflow:hidden}
 .founder-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--orange2))}
 .founder-top{display:flex;align-items:center;gap:20px;margin-bottom:24px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,0.07)}
 .founder-photo{width:90px;height:90px;border-radius:50%;flex-shrink:0;overflow:hidden;border:3px solid rgba(240,98,10,0.38);box-shadow:0 0 0 5px rgba(240,98,10,0.08),0 8px 24px rgba(0,0,0,0.4)}
@@ -24,16 +24,16 @@
 .promise-list li{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--light)}
 .pchk{width:17px;height:17px;border-radius:50%;flex-shrink:0;background:rgba(240,98,10,0.14);border:1px solid rgba(240,98,10,0.3);display:flex;align-items:center;justify-content:center}
 .pchk svg{width:8px;height:8px;stroke:var(--orange);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.waarom-section{padding:56px 48px;background:var(--navy)}
+.waarom-section{padding:56px 48px}
 .waarom-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;max-width:1140px;margin:0 auto}
 .story-text p{font-size:14px;color:var(--pale);line-height:1.8;font-weight:300;margin-bottom:14px}
 .story-text p:last-child{color:var(--light)}
 .values-list{display:flex;flex-direction:column;gap:12px}
-.vc{background:var(--navy3);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:22px;display:flex;align-items:flex-start;gap:14px}
+.vc{border-radius:12px;padding:22px;display:flex;align-items:flex-start;gap:14px}
 .vc-num{font-family:var(--serif);font-size:28px;color:rgba(240,98,10,0.22);font-weight:700;line-height:1;flex-shrink:0;width:32px}
 .vc-h{font-size:14px;font-weight:600;color:#fff;margin-bottom:4px}
 .vc-p{font-size:12px;color:var(--pale);line-height:1.6}
-.aanpak-section{padding:56px 48px;background:var(--navy2)}
+.aanpak-section{padding:56px 48px}
 .cta-simple{background:linear-gradient(135deg,#0F1E32,#152436);border:1px solid rgba(240,98,10,0.2);border-radius:16px;padding:40px 48px;display:flex;align-items:center;justify-content:space-between;gap:32px;position:relative;overflow:hidden}
 .cta-simple::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(240,98,10,0.1),transparent 70%);pointer-events:none}
 .cta-simple h3{font-family:var(--serif);font-size:clamp(20px,2.5vw,28px);color:#fff;margin-bottom:5px}
@@ -191,14 +191,14 @@
   <div class="max">
     <div class="center reveal">
       <span class="stag">Onze aanpak</span>
-      <h2 class="sec-h">Specialist, geen alleskunner</h2>
-      <p class="sec-sub">We werken uitsluitend voor bouw- en klusbedrijven. Dat is precies onze kracht.</p>
+      <h2 class="sec-h">Specialist in websites voor vakbedrijven</h2>
+      <p class="sec-sub">Van bouwbedrijven tot zelfstandige vakmensen — we bouwen duidelijke websites die professioneel ogen en klanten opleveren.</p>
     </div>
     <div class="g4 reveal" style="margin-top:36px">
-      <div class="gc"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Specialist in de bouw</h3><p>We werken alléén voor bouw- en klusbedrijven. Geen cafés, geen kappers.</p></div>
-      <div class="gc"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><h3>Persoonlijk</h3><p>Vaste contactpersoon, duidelijke communicatie. Geen tussenlagen.</p></div>
-      <div class="gc"><div class="gc-icon"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><h3>Resultaatgericht</h3><p>Elke keuze is gericht op meer aanvragen voor jouw bedrijf.</p></div>
-      <div class="gc"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Betrouwbaar</h3><p>Onderhoud, veiligheid en jaarlijkse websitecheck inbegrepen.</p></div>
+      <div class="gc"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Praktisch en duidelijk</h3><p>Geen ingewikkeld traject. Gewoon een website die professioneel werkt.</p></div>
+      <div class="gc"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><h3>Persoonlijk contact</h3><p>Korte lijnen, snelle communicatie en direct contact.</p></div>
+      <div class="gc"><div class="gc-icon"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><h3>Resultaatgericht</h3><p>Elke keuze is gericht op vertrouwen, zichtbaarheid en aanvragen.</p></div>
+      <div class="gc"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Betrouwbaar</h3><p>Onderhoud, veiligheid en ondersteuning gewoon goed geregeld.</p></div>
     </div>
     <div class="cta-simple reveal" style="margin-top:44px">
       <div><h3>Klaar om te starten?</h3><p>Plan een gratis kennismakingsgesprek — vrijblijvend en zonder verkooppraatjes.</p></div>

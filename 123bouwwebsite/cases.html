@@ -79,12 +79,12 @@
 .site-mock--feat .sm-svc{padding:8px 5px}
 .stat-bubble{position:absolute;bottom:-12px;right:-12px;background:rgba(11,22,38,0.92);backdrop-filter:blur(10px);border:1px solid rgba(240,98,10,0.28);padding:14px 18px;border-radius:10px;box-shadow:0 6px 22px rgba(0,0,0,0.32);text-align:center;max-width:168px}
 .sb-label{font-size:11px;font-weight:600;color:var(--light);line-height:1.45;letter-spacing:.02em}
-.filter-bar{padding:20px 48px;background:var(--navy2);border-bottom:1px solid rgba(255,255,255,0.06);position:sticky;top:66px;z-index:50}
+.filter-bar{padding:20px 48px;border-bottom:1px solid rgba(255,255,255,0.08);position:sticky;top:66px;z-index:50}
 .filter-inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .filter-btn{padding:7px 16px;border-radius:100px;font-size:12px;font-weight:500;border:1px solid rgba(255,255,255,0.1);color:var(--pale);background:transparent;cursor:pointer;transition:all .2s;white-space:nowrap;font-family:var(--sans)}
 .filter-btn:hover{border-color:rgba(255,255,255,0.25);color:#fff}
 .filter-btn.active{background:var(--navy);color:#fff;border-color:rgba(255,255,255,0.2);font-weight:600}
-.featured-section{padding:52px 48px;background:var(--navy)}
+.featured-section{padding:52px 48px}
 .featured-card{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;background:var(--navy3);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:36px;position:relative;overflow:hidden}
 .featured-card::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(240,98,10,0.07),transparent 70%);pointer-events:none}
 .feat-img{background:linear-gradient(135deg,#162035,#1E3050);border-radius:10px;height:260px;border:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;overflow:hidden}
@@ -117,24 +117,22 @@
 .feat-detail strong{color:#fff;font-weight:600}
 .cases-intro{max-width:1140px;margin:0 auto 28px;text-align:center}
 .cases-intro .sec-sub{margin:10px auto 0;max-width:560px}
-.cases-section{padding:48px 48px 56px;background:var(--navy2)}
+.cases-section{padding:48px 48px 56px}
 .cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1140px;margin:0 auto}
-.case-card{background:var(--navy3);border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s;cursor:pointer}
-.case-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.35);border-color:rgba(240,98,10,0.2)}
+.case-card{border-radius:12px;overflow:hidden;cursor:pointer}
 .case-img{height:155px;background:linear-gradient(135deg,#0F1E30,#1A3050);position:relative;display:flex;align-items:center;justify-content:center}
 .case-img-inner{width:86%;height:80%;border-radius:6px;overflow:hidden;border:1px solid rgba(255,255,255,0.09);box-shadow:0 8px 22px rgba(0,0,0,0.38),0 0 0 1px rgba(255,255,255,0.04) inset}
 .site-mock--card,.case-mock-preview{background-color:#0a111c}
-.case-cat{position:absolute;top:12px;left:12px;background:rgba(11,18,32,0.85);backdrop-filter:blur(8px);color:var(--light);padding:3px 10px;border-radius:100px;font-size:10px;font-weight:600;border:1px solid rgba(255,255,255,0.1)}
+.case-cat{position:absolute;top:12px;left:12px;z-index:5;background:#0f1828;color:#f5f8fc;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;line-height:1.3;letter-spacing:.02em;border:1px solid rgba(255,255,255,0.2);box-shadow:0 2px 12px rgba(0,0,0,0.5),0 0 0 1px rgba(240,98,10,0.14),0 0 16px rgba(240,98,10,0.1);-webkit-font-smoothing:antialiased;text-shadow:0 1px 2px rgba(0,0,0,0.4);pointer-events:none}
 .case-body{padding:18px 20px}
 .case-name{font-size:15px;font-weight:600;color:#fff;margin-bottom:4px}
-.case-tag{font-size:12px;color:rgba(200,216,232,0.92);font-weight:500;margin-bottom:10px;line-height:1.4}
-.case-link{font-size:12px;color:var(--pale);text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:color .2s,gap .2s}
-.case-link:hover{color:var(--orange2);gap:8px}
-.trust-section{padding:56px 48px 52px;background:var(--navy)}
+.case-tag{font-size:12px;color:rgba(200,216,232,0.92);font-weight:500;line-height:1.4}
+.case-stat{margin-bottom:0}
+.trust-section{padding:56px 48px 52px}
 .trust-intro{max-width:640px;margin:0 auto;text-align:center}
 .trust-intro .sec-sub{margin-top:12px}
 .trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
-.trust-card{background:var(--navy3);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:26px 24px;transition:border-color .25s,transform .25s}
+.trust-card{border-radius:12px;padding:26px 24px;transition:border-color .25s,transform .25s}
 .trust-card:hover{border-color:rgba(240,98,10,0.2);transform:translateY(-3px)}
 .trust-card-icon{width:36px;height:36px;border-radius:8px;background:rgba(240,98,10,0.1);border:1px solid rgba(240,98,10,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
 .trust-card-icon svg{width:16px;height:16px;stroke:var(--orange);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -180,6 +178,10 @@
   .featured-card{grid-template-columns:1fr !important;gap:24px !important;padding:24px !important}
   .feat-mock-preview{background-position:center 12%}
   .case-mock-preview{background-position:center 10%}
+  .case-cat{top:10px;left:10px;font-size:12px;padding:6px 14px;color:#fff;background:#101a2c;border:1px solid rgba(255,255,255,0.26);box-shadow:0 3px 14px rgba(0,0,0,0.55),0 0 0 1px rgba(240,98,10,0.18),0 0 20px rgba(240,98,10,0.12)}
+  .case-body{padding:16px 18px 18px}
+  .case-name{font-size:16px}
+  .case-stat{font-size:13px;color:rgba(220,232,245,0.95)}
   .feat-stats{grid-template-columns:1fr 1fr !important}
   .cases-section{padding:40px 20px 48px !important}
   .trust-section{padding:48px 20px !important}
@@ -312,12 +314,12 @@
     <p class="sec-sub">Conceptuele voorbeelden die laten zien hoe jouw bedrijf professioneel online kan overkomen — per type bouwbedrijf.</p>
   </div>
   <div class="cases-grid" id="caseGrid">
-    <div class="case-card reveal" data-cat="aannemer"><div class="case-img"><div class="case-img-inner"><div class="case-mock-preview case-mock-preview--jansen" role="img" aria-label="Voorbeeld Bouwbedrijf Jansen website"></div></div><div class="case-cat">Aannemer</div></div><div class="case-body"><div class="case-name">Bouwbedrijf Jansen</div><div class="case-stat">Betrouwbare uitstraling</div><a href="#" class="case-link">Bekijk case →</a></div></div>
-    <div class="case-card reveal" data-cat="timmer"><div class="case-img"><div class="case-img-inner"><div class="case-mock-preview case-mock-preview--timmer" role="img" aria-label="Voorbeeld timmerbedrijf website"></div></div><div class="case-cat">Timmerbedrijven</div></div><div class="case-body"><div class="case-name">Hout & Meer Timmerwerken</div><div class="case-stat">Duidelijke diensten</div><a href="#" class="case-link">Bekijk case →</a></div></div>
-    <div class="case-card reveal" data-cat="installateur"><div class="case-img"><div class="case-img-inner"><div class="case-mock-preview case-mock-preview--installateur" role="img" aria-label="Voorbeeld installateur website"></div></div><div class="case-cat">Installateur</div></div><div class="case-body"><div class="case-name">Installatie Groep Noord</div><div class="case-stat">Projecten zichtbaar</div><a href="#" class="case-link">Bekijk case →</a></div></div>
-    <div class="case-card reveal" data-cat="stukadoor"><div class="case-img"><div class="case-img-inner"><div class="case-mock-preview case-mock-preview--ahmed" role="img" aria-label="Voorbeeld Stukadoorsbedrijf Ahmed website"></div></div><div class="case-cat">Stukadoor</div></div><div class="case-body"><div class="case-name">Stukadoorsbedrijf Ahmed</div><div class="case-stat">Snel contact</div><a href="#" class="case-link">Bekijk case →</a></div></div>
-    <div class="case-card reveal" data-cat="dakdekker"><div class="case-img"><div class="case-img-inner"><div class="case-mock-preview case-mock-preview--dakdekker" role="img" aria-label="Voorbeeld dakdekker website"></div></div><div class="case-cat">Dakdekker</div></div><div class="case-body"><div class="case-name">Van Dam Dakwerken</div><div class="case-stat">Mobielvriendelijk</div><a href="#" class="case-link">Bekijk case →</a></div></div>
-    <div class="case-card reveal" data-cat="aannemer"><div class="case-img"><div class="case-img-inner"><div class="case-mock-preview case-mock-preview--visser" role="img" aria-label="Voorbeeld Bouwgroep Visser website"></div></div><div class="case-cat">Aannemer</div></div><div class="case-body"><div class="case-name">Bouwgroep Visser</div><div class="case-stat">Professionele presentatie</div><a href="#" class="case-link">Bekijk case →</a></div></div>
+    <div class="case-card reveal" data-cat="aannemer"><div class="case-img"><div class="case-img-inner"><div class="case-mock-preview case-mock-preview--jansen" role="img" aria-label="Voorbeeld Bouwbedrijf Jansen website"></div></div><div class="case-cat">Aannemer</div></div><div class="case-body"><div class="case-name">Bouwbedrijf Jansen</div><div class="case-stat">Betrouwbare uitstraling</div></div></div>
+    <div class="case-card reveal" data-cat="timmer"><div class="case-img"><div class="case-img-inner"><div class="case-mock-preview case-mock-preview--timmer" role="img" aria-label="Voorbeeld timmerbedrijf website"></div></div><div class="case-cat">Timmerbedrijven</div></div><div class="case-body"><div class="case-name">Hout & Meer Timmerwerken</div><div class="case-stat">Duidelijke diensten</div></div></div>
+    <div class="case-card reveal" data-cat="installateur"><div class="case-img"><div class="case-img-inner"><div class="case-mock-preview case-mock-preview--installateur" role="img" aria-label="Voorbeeld installateur website"></div></div><div class="case-cat">Installateur</div></div><div class="case-body"><div class="case-name">Installatie Groep Noord</div><div class="case-stat">Projecten zichtbaar</div></div></div>
+    <div class="case-card reveal" data-cat="stukadoor"><div class="case-img"><div class="case-img-inner"><div class="case-mock-preview case-mock-preview--ahmed" role="img" aria-label="Voorbeeld Stukadoorsbedrijf Ahmed website"></div></div><div class="case-cat">Stukadoor</div></div><div class="case-body"><div class="case-name">Stukadoorsbedrijf Ahmed</div><div class="case-stat">Snel contact</div></div></div>
+    <div class="case-card reveal" data-cat="dakdekker"><div class="case-img"><div class="case-img-inner"><div class="case-mock-preview case-mock-preview--dakdekker" role="img" aria-label="Voorbeeld dakdekker website"></div></div><div class="case-cat">Dakdekker</div></div><div class="case-body"><div class="case-name">Van Dam Dakwerken</div><div class="case-stat">Mobielvriendelijk</div></div></div>
+    <div class="case-card reveal" data-cat="aannemer"><div class="case-img"><div class="case-img-inner"><div class="case-mock-preview case-mock-preview--visser" role="img" aria-label="Voorbeeld Bouwgroep Visser website"></div></div><div class="case-cat">Aannemer</div></div><div class="case-body"><div class="case-name">Bouwgroep Visser</div><div class="case-stat">Professionele presentatie</div></div></div>
   </div>
 </section>
 
