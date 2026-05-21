@@ -43,6 +43,16 @@
 @media(max-width:768px){
   section.sec, .sec{padding:48px 20px !important}
   .hero-center,.hero-section{padding:44px 20px 36px !important}
+  /* Over ons hero — single column, full-width card */
+  .hero-over{padding:44px 20px 36px !important;overflow-x:hidden}
+  .hero-over-inner{display:grid !important;grid-template-columns:1fr !important;gap:28px !important;width:100%;max-width:100%;min-width:0}
+  .hero-over-inner > div{min-width:0;width:100%;max-width:100%}
+  .hero-over .sec-h,.hero-over .sec-sub{max-width:100%}
+  .founder-card{width:100%;max-width:100%;min-width:0;box-sizing:border-box;padding:24px 20px !important;margin:0}
+  .founder-top{gap:16px;margin-bottom:20px;padding-bottom:18px}
+  .founder-top > div:last-child{min-width:0;flex:1}
+  .founder-name,.founder-tagline{word-wrap:break-word;overflow-wrap:break-word}
+  .promise-list li{min-width:0;align-items:flex-start;line-height:1.45}
   /* Hero text only */
   .hero-inner,.hero-two-col{display:flex !important;flex-direction:column !important;gap:0 !important}
   .hero-device-col,.mock-wrap{display:none !important}
@@ -101,6 +111,8 @@
 }
 @media(max-width:480px){
   section.sec,.sec{padding:40px 16px !important}
+  .hero-over{padding:40px 16px 32px !important}
+  .founder-card{padding:20px 16px !important}
   .aanpak-grid{grid-template-columns:1fr !important}
   .guarantee,.trust-grid{grid-template-columns:1fr !important}
 }

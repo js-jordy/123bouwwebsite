@@ -51,15 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 5. Scroll reveal
-  const revObs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('in'), i * 70);
-        revObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(r => revObs.observe(r));
+  initScrollReveal();
 
   // 6. FAQ — smooth height accordion
   const closeFaq = (item) => {
@@ -125,3 +117,99 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+/**
+ * Subtle scroll reveal — IntersectionObserver, one-shot, grid stagger.
+ * Plain CSS + vanilla JS; respects prefers-reduced-motion.
+ */
+function initScrollReveal() {
+  const STAGGER_GRIDS = [
+    ['.pricing-grid.reveal', '.p-card'],
+    ['.g3.reveal', '.gc'],
+    ['.g4.reveal', '.gc'],
+    ['.process-grid.reveal', '.step'],
+    ['.transform-grid.reveal', '.t-card'],
+    ['.guarantee.reveal', '.gu-item'],
+    ['.values-list.reveal', '.vc'],
+    ['.trust-strip.reveal', '.ti-item'],
+  ];
+  const STAGGER_MS = 55;
+  const SKIP_SEL = '.chat-float, nav, .nav-drawer, #scroll-bar, #cursor-glow, #section-pill';
+
+  STAGGER_GRIDS.forEach(([gridSel, childSel]) => {
+    document.querySelectorAll(gridSel).forEach((grid) => {
+      grid.classList.remove('reveal');
+      grid.classList.add('reveal-stagger');
+      grid.querySelectorAll(childSel).forEach((child, i) => {
+        child.classList.add('reveal');
+        child.style.setProperty('--reveal-delay', i * STAGGER_MS + 'ms');
+      });
+    });
+  });
+
+  document.querySelectorAll(
+    'section.faq-section:not(.reveal) .faq-max > div:first-child, section.faq-section .faq-header'
+  ).forEach((el) => {
+    if (!el.classList.contains('reveal')) el.classList.add('reveal');
+  });
+
+  const items = [...document.querySelectorAll('.reveal')].filter(
+    (el) => !el.matches(SKIP_SEL) && !el.closest(SKIP_SEL)
+  );
+
+  items.forEach((el) => {
+    if (el.style.getPropertyValue('--reveal-delay')) return;
+    const parent = el.parentElement;
+    if (!parent) return;
+    const siblings = [...parent.children].filter((c) => c.classList.contains('reveal'));
+    if (siblings.length < 2) return;
+    const idx = siblings.indexOf(el);
+    if (idx >= 0) el.style.setProperty('--reveal-delay', idx * STAGGER_MS + 'ms');
+  });
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) {
+    items.forEach((el) => el.classList.add('in'));
+    return;
+  }
+
+  const revealOne = (el) => {
+    if (!el.classList.contains('in')) el.classList.add('in');
+  };
+
+  const getDelay = (el) => {
+    const v = el.style.getPropertyValue('--reveal-delay');
+    const n = parseInt(v, 10);
+    return Number.isFinite(n) ? n : 0;
+  };
+
+  const revObs = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const delay = getDelay(el);
+      if (delay > 0) setTimeout(() => revealOne(el), delay);
+      else requestAnimationFrame(() => revealOne(el));
+      revObs.unobserve(el);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+  const isInView = (el) => {
+    const rect = el.getBoundingClientRect();
+    return rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
+  };
+
+  items.forEach((el) => {
+    if (isInView(el) && getDelay(el) === 0) revealOne(el);
+  });
+  document.documentElement.classList.add('js-reveal');
+
+  items.forEach((el) => {
+    if (!isInView(el)) {
+      revObs.observe(el);
+      return;
+    }
+    const delay = getDelay(el);
+    if (delay > 0) setTimeout(() => revealOne(el), delay);
+  });
+}

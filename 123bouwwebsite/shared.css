@@ -108,8 +108,11 @@ textarea.fi{resize:none;height:100px}
 .faq-q.open svg{transform:rotate(45deg)}
 .faq-a{font-size:13px;color:var(--pale);line-height:1.7;font-weight:300;max-height:0;overflow:hidden;opacity:0;margin-top:0;transition:max-height var(--t-med) var(--ease-out),opacity var(--t-med) var(--ease-soft),margin var(--t-fast) var(--ease-soft)}
 .faq-a.open{opacity:1;margin-top:10px}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
-.reveal.in{opacity:1;transform:translateY(0)}
+/* Scroll reveal — visible until JS enables (avoids hidden content before load) */
+.reveal{visibility:visible}
+html.js-reveal .reveal:not(.in){opacity:0;transform:translateY(12px);transition:opacity .48s var(--ease-out),transform .48s var(--ease-out);transition-delay:var(--reveal-delay,0ms)}
+html.js-reveal .reveal.in{opacity:1;transform:translateY(0)}
+html.js-reveal .reveal-stagger > .reveal{transition-delay:var(--reveal-delay,0ms)}
 .chat-float{position:fixed;bottom:24px;right:24px;z-index:200;width:50px;height:50px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(240,98,10,0.4);cursor:pointer;transition:transform .2s}
 .chat-float:hover{transform:scale(1.08)}
 .chat-float svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -291,7 +294,7 @@ footer{background:linear-gradient(180deg,#080f18 0%,#060D18 100%);border-top:1px
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .reveal,.reveal.in{opacity:1;transform:none;transition:none}
+  html.js-reveal .reveal:not(.in),html.js-reveal .reveal.in,.reveal,.reveal.in{opacity:1;transform:none;transition:none}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .case-mock-preview,.feat-mock-preview{transition:none!important;transform:none!important}
 }
