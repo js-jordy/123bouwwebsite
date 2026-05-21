@@ -18,18 +18,18 @@ body{background:var(--navy);color:#EFF4F9;font-family:var(--sans);font-size:15px
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
 
 /* ── NAV — DESKTOP ── */
-nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;gap:12px;background:rgba(11,18,32,0.96);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,0.07)}
-.nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0}
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;padding:0 40px;height:64px;gap:12px;background:rgba(11,18,32,0.96);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,0.07)}
+.nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0;position:relative;z-index:1}
 .nav-logo svg{width:24px;height:24px;fill:none;stroke:var(--orange);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .nav-brand{font-size:14px;font-weight:700;color:#fff;white-space:nowrap}
 .nav-brand span{color:var(--orange)}
-.nav-links{display:flex;align-items:center;gap:2px;list-style:none}
+.nav-links{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
 .nav-links a{font-size:13px;color:var(--pale);text-decoration:none;white-space:nowrap;padding:6px 12px;border-radius:6px;transition:color .2s,background .2s}
 .nav-links a:hover{color:#fff;background:rgba(255,255,255,0.06)}
 .nav-links a.active{color:#fff;background:rgba(255,255,255,0.08);font-weight:500}
-.nav-cta{flex-shrink:0;background:var(--orange);color:#fff;padding:9px 20px;border-radius:7px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;transition:background .2s,transform .15s}
+.nav-cta{flex-shrink:0;margin-left:auto;position:relative;z-index:1;background:var(--orange);color:#fff;padding:9px 20px;border-radius:7px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;transition:background .2s,transform .15s}
 .nav-cta:hover{background:var(--orange2);transform:translateY(-1px)}
-.nav-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:8px;color:var(--pale);flex-shrink:0;border-radius:8px;transition:background .2s}
+.nav-menu-btn{display:none;margin-left:auto;background:none;border:none;cursor:pointer;padding:8px;color:var(--pale);flex-shrink:0;border-radius:8px;transition:background .2s}
 .nav-menu-btn:hover{background:rgba(255,255,255,0.08)}
 .nav-menu-btn svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;display:block}
 
