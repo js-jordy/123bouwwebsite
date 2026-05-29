@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>123zzpwebsite.nl | Websites voor ZZP'ers en kleine ondernemers</title>
-<meta name="description" content="Professionele websites voor ZZP'ers en kleine ondernemers. Betrouwbaar online, zonder technisch gedoe. Online in 5 werkdagen, gegarandeerd.">
+<title>123zzpwebsite.nl | Websites voor ZZP'ers en groeiende ondernemers</title>
+<meta name="description" content="Professionele websites voor ZZP'ers en groeiende ondernemers. Duidelijk, betrouwbaar en makkelijk contact opnemen, zonder technisch gedoe.">
 <link rel="stylesheet" href="shared.css">
 <style>
 /* HERO */
@@ -22,6 +22,61 @@
 .hero-btns{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .hero-device-col{position:relative}
 .dev-wrap{position:relative;padding:4px 0 24px;z-index:1}
+/* Hero mockup — device entrance + build sequence */
+@keyframes heroMockDeviceIn{
+  from{opacity:0;transform:translateY(14px) scale(0.98)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes heroMockStepIn{
+  from{opacity:0;transform:translateY(7px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.dev-wrap.hero-mock-animate{
+  opacity:0;
+  transform:translateY(14px) scale(0.98);
+  animation:heroMockDeviceIn .85s cubic-bezier(.22,1,.36,1) forwards;
+}
+.hero-mock-animate .mock-build-step{
+  opacity:0;
+  animation:heroMockStepIn .42s cubic-bezier(.22,1,.36,1) forwards;
+}
+.hero-mock-animate .mock-topbar.mock-build-step{animation-delay:.42s}
+.hero-mock-animate .mock-kicker.mock-build-step,
+.hero-mock-animate .mock-head.mock-build-step{animation-delay:.72s}
+.hero-mock-animate .mock-col-b.mock-build-step{animation-delay:1.02s}
+.hero-mock-animate .mock-chip-btn.mock-build-step{animation-delay:1.32s}
+.hero-mock-animate .mock-ready-badge.mock-build-step{animation-delay:1.62s}
+.hero-mock-animate .mock-footer-row.mock-build-step{animation-delay:1.92s}
+.hero-mock-animate .dev-phone{
+  opacity:0;
+  animation:heroMockStepIn .5s cubic-bezier(.22,1,.36,1) .55s forwards;
+}
+.mock-ready-badge{
+  position:absolute;
+  top:5px;
+  right:5px;
+  z-index:6;
+  font-size:5px;
+  font-weight:700;
+  letter-spacing:.55px;
+  text-transform:uppercase;
+  color:var(--orange2);
+  background:linear-gradient(135deg,rgba(240,98,10,.2),rgba(240,98,10,.1));
+  border:1px solid rgba(240,98,10,.42);
+  padding:3px 7px;
+  border-radius:100px;
+  box-shadow:0 2px 10px rgba(240,98,10,.18);
+  pointer-events:none;
+}
+@media(prefers-reduced-motion:reduce){
+  .dev-wrap.hero-mock-animate,
+  .dev-wrap.hero-mock-animate .mock-build-step,
+  .dev-wrap.hero-mock-animate .dev-phone{
+    animation:none!important;
+    opacity:1!important;
+    transform:none!important;
+  }
+}
 .dev-wrap::before{
   content:'';
   position:absolute;
@@ -38,7 +93,7 @@
 .dev-bar{background:linear-gradient(180deg,#1c2c42,#152436);padding:8px 11px;display:flex;gap:5px;align-items:center;border-bottom:1px solid rgba(0,0,0,0.35)}
 .dd{width:8px;height:8px;border-radius:50%}
 .dev-screen{height:218px;background:linear-gradient(165deg,#0c1624 0%,#0f1e32 40%,#111d2e 100%);padding:0;overflow:hidden}
-.mock-page{height:100%;display:flex;flex-direction:column;padding:10px 11px 9px;text-align:left}
+.mock-page{position:relative;height:100%;display:flex;flex-direction:column;padding:10px 11px 9px;text-align:left}
 .mock-topbar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
 .mock-brand{display:flex;align-items:center;gap:5px;min-width:0}
 .mock-house-ic{width:14px;height:14px;flex-shrink:0;stroke:var(--orange);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -280,13 +335,13 @@
   <div class="hero-glow"></div><div class="hero-grid-bg"></div>
   <div class="hero-two-col">
     <div>
-      <div class="hero-tag"><span class="hero-tag-dot"></span>Websites voor ZZP'ers en kleine bedrijven</div>
-      <h1 class="hero-h1">Een professionele website voor jouw ZZP-bedrijf, zonder technisch gedoe.</h1>
-      <p class="hero-sub">Wij helpen zelfstandigen en kleine ondernemers aan een moderne, duidelijke en betrouwbare website die past bij hun bedrijf en gericht is op meer aanvragen.</p>
+      <div class="hero-tag"><span class="hero-tag-dot"></span>Websites voor ZZP'ers en groeiende ondernemers</div>
+      <h1 class="hero-h1">Een professionele website die laat zien wie je bent en wat je doet.</h1>
+      <p class="hero-sub">Wij helpen ZZP'ers en groeiende ondernemers aan een duidelijke, betrouwbare website die past bij hun bedrijf en makkelijk maakt om contact op te nemen.</p>
       <ul class="check-list hero-checks">
-        <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Nog geen website? Wij regelen het, jij houdt focus op je werk</li>
-        <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Online in 5 werkdagen, gegarandeerd</li>
-        <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Duidelijk en professioneel, ook op mobiel</li>
+        <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Nog geen website of toe aan iets professionelers?</li>
+        <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Eerste concept binnen 5 werkdagen</li>
+        <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Duidelijk, betrouwbaar en goed op mobiel</li>
       </ul>
       <div class="hero-btns">
         <a href="contact.html" class="btn-p">Website aanvragen</a>
@@ -294,26 +349,27 @@
       </div>
     </div>
     <div class="hero-device-col">
-      <div class="dev-wrap">
+      <div class="dev-wrap hero-mock-animate">
         <div class="device-laptop">
           <div class="lap-bezel">
             <div class="dev-bar"><div class="dd" style="background:#FF5F57"></div><div class="dd" style="background:#FEBC2E"></div><div class="dd" style="background:#28C840"></div></div>
             <div class="dev-screen">
               <div class="mock-page">
-                <div class="mock-topbar">
+                <div class="mock-topbar mock-build-step">
                   <div class="mock-brand">
                     <svg class="mock-house-ic" viewBox="0 0 28 28" aria-hidden="true"><path d="M14 4L4 11v13h7v-8h6v8h7V11L14 4z"/></svg>
-                    <span class="mock-brand-txt">De Vries<span class="mock-brand-sub"> Bouw</span></span>
+                    <span class="mock-brand-txt">Voorbeeld ZZP-site</span>
                   </div>
                   <div class="mock-nav-dots"><span></span><span></span><span></span></div>
                 </div>
+                <span class="mock-ready-badge mock-build-step" aria-hidden="true">Concept klaar</span>
                 <div class="mock-body">
                   <div class="mock-col-a">
-                    <p class="mock-kicker">Renovatie · Nieuwbouw</p>
-                    <p class="mock-head">Solide bouw,<br>duidelijke site</p>
-                    <span class="mock-chip-btn">Offerte aanvragen</span>
+                    <p class="mock-kicker mock-build-step">Lokale dienstverlener</p>
+                    <p class="mock-head mock-build-step">Duidelijk online<br>zichtbaar</p>
+                    <span class="mock-chip-btn mock-build-step">Contact opnemen</span>
                   </div>
-                  <div class="mock-col-b">
+                  <div class="mock-col-b mock-build-step">
                     <svg class="mock-build-svg" viewBox="0 0 140 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
                       <defs>
                         <linearGradient id="heroMockSky" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -336,7 +392,7 @@
                     </svg>
                   </div>
                 </div>
-                <div class="mock-footer-row">
+                <div class="mock-footer-row mock-build-step">
                   <div class="mock-ft"><i></i><span>Projecten</span></div>
                   <div class="mock-ft"><i></i><span>Reviews</span></div>
                   <div class="mock-ft"><i></i><span>Contact</span></div>
@@ -349,7 +405,7 @@
         <div class="dev-phone">
           <div class="phone-notch" aria-hidden="true"></div>
           <div class="ph-screen">
-            <div class="m-m-brand"><span class="m-m-dot"></span><span class="m-m-name">De Vries Bouw</span></div>
+            <div class="m-m-brand"><span class="m-m-dot"></span><span class="m-m-name">Voorbeeld ZZP-site</span></div>
             <div class="m-m-bar" aria-hidden="true"></div>
             <div class="m-m-hero" aria-hidden="true">
               <svg viewBox="0 0 80 56" width="72" height="50" fill="none" aria-hidden="true">
@@ -363,8 +419,8 @@
         </div>
       </div>
       <div class="stat-chips">
-        <div class="chip"><span class="chip-n" data-target="5" data-suffix=" dgn">5 dgn</span><span class="chip-l">Online gegarandeerd</span></div>
-        <div class="chip"><span class="chip-n" data-target="100" data-suffix="+">100+</span><span class="chip-l">Ondernemers geholpen</span></div>
+        <div class="chip"><span class="chip-n" data-target="5" data-suffix=" dgn">5 dgn</span><span class="chip-l">Eerste concept</span></div>
+        <div class="chip"><span class="chip-n">1-op-1</span><span class="chip-l">Persoonlijke aanpak</span></div>
         <div class="chip"><span class="chip-n" data-target="24" data-suffix="u">24u</span><span class="chip-l">Reactietijd</span></div>
       </div>
     </div>
@@ -385,15 +441,15 @@
 
 <section class="sec sec-alt strength-sec" data-section="Onze kracht">
   <div class="max">
-    <div class="sec-hdr center reveal"><span class="stag">Voor wie</span><h2>ZZP'ers, kleine bedrijven en lokale dienstverleners</h2><p class="sec-sub">123ZZPWebsite maakt professionele websites voor zelfstandigen en kleine ondernemers die betrouwbaar, duidelijk en professioneel online willen staan, zonder technisch gedoe.</p><p class="sec-sub" style="margin-top:16px;max-width:720px;margin-left:auto;margin-right:auto">123ZZPWebsite is extra sterk voor praktische ondernemers en lokale dienstverleners, waaronder bouwprofessionals zoals aannemers, schilders, stukadoors, hoveniers, installateurs en klusbedrijven. Ook coaches, trainers, beauty- en lifestyle-ondernemers, sport- en onderwijsbedrijven en startende ondernemers vinden bij ons een passende basis.</p></div>
+    <div class="sec-hdr center reveal"><span class="stag">Voor wie</span><h2>ZZP'ers, groeiende ondernemers en lokale dienstverleners</h2><p class="sec-sub">123zzpwebsite.nl maakt professionele websites voor ondernemers die duidelijk, betrouwbaar en herkenbaar online willen staan, zonder technisch gedoe.</p><p class="sec-sub" style="margin-top:16px;max-width:720px;margin-left:auto;margin-right:auto">Of je nu net start, je bestaande website wilt verbeteren of professioneler wilt overkomen: we zorgen voor een website die past bij jouw bedrijf, jouw verhaal en jouw manier van werken.</p></div>
     <div class="sec-hdr center reveal" style="margin-top:48px"><span class="stag">Onze kracht</span><h2>Waarom ondernemers voor<br>123zzpwebsite.nl kiezen</h2><p class="sec-sub">De voordelen van een websitepartij die met jouw bedrijf meedenkt.</p></div>
     <div class="g3 reveal">
-      <div class="gc"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Voor ZZP'ers en kleine bedrijven</h3><p>Websites voor zelfstandigen en ondernemers die professioneel online willen staan.</p></div>
-      <div class="gc"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h3>Snel online</h3><p>Binnen 5 werkdagen een professionele website live.</p></div>
-      <div class="gc"><div class="gc-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><h3>Mobielvriendelijk</h3><p>Perfecte weergave op elk apparaat.</p></div>
-      <div class="gc"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Veilig &amp; betrouwbaar</h3><p>Altijd online en bereikbaar voor jouw klanten.</p></div>
-      <div class="gc"><div class="gc-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h3>Gemaakt voor aanvragen</h3><p>Meer aanvragen, meer groei. Elke pagina gericht op conversie.</p></div>
-      <div class="gc"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><h3>Persoonlijke service</h3><p>Hulp wanneer je het nodig hebt. Direct Jordy aan de lijn.</p></div>
+      <div class="gc"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Voor ZZP'ers en groeiende ondernemers</h3><p>Websites voor ondernemers die professioneel online zichtbaar willen zijn.</p></div>
+      <div class="gc"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h3>Eerste concept binnen 5 werkdagen</h3><p>Bij complete input ontvang je snel een eerste duidelijke conceptversie.</p></div>
+      <div class="gc"><div class="gc-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><h3>Mobielvriendelijk</h3><p>Je website werkt prettig op desktop, tablet en mobiel.</p></div>
+      <div class="gc"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Duidelijk &amp; betrouwbaar</h3><p>Een professionele uitstraling die vertrouwen geeft vanaf het eerste bezoek.</p></div>
+      <div class="gc"><div class="gc-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h3>Duidelijk en contactgericht</h3><p>Bezoekers begrijpen snel wat je doet en hoe ze contact kunnen opnemen.</p></div>
+      <div class="gc"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><h3>Persoonlijke begeleiding</h3><p>Direct contact, korte lijnen en duidelijke hulp tijdens het hele traject.</p></div>
     </div>
     <p style="font-size:11px;color:var(--muted);text-align:center;margin-top:14px;display:none" class="swipe-hint">← Swipe voor meer →</p>
     <style>@media(max-width:768px){.swipe-hint{display:block !important}}</style>
@@ -404,8 +460,8 @@
   <div class="max">
     <div class="center reveal"><span class="stag">Transformatie</span><h2>Van verouderde website naar<br>professioneel online fundament</h2></div>
     <div class="transform-grid reveal">
-      <div class="t-card voor"><span class="t-badge voor">Voor</span><div class="t-h">Verouderd &amp; onoverzichtelijk</div><ul class="t-list"><li class="bad"><span class="ti bad">✕</span>Niet mobielvriendelijk</li><li class="bad"><span class="ti bad">✕</span>Onduidelijke navigatie</li><li class="bad"><span class="ti bad">✕</span>Weinig vertrouwen</li><li class="bad"><span class="ti bad">✕</span>Geen resultaat</li></ul></div>
-      <div class="t-card na"><span class="t-badge na">Na</span><div class="t-h">Modern &amp; resultaatgericht</div><ul class="t-list"><li class="good"><span class="ti good">✓</span>Mobielvriendelijk design</li><li class="good"><span class="ti good">✓</span>Duidelijke structuur</li><li class="good"><span class="ti good">✓</span>Professionele uitstraling</li><li class="good"><span class="ti good">✓</span>Meer aanvragen</li></ul></div>
+      <div class="t-card voor"><span class="t-badge voor">Voor</span><div class="t-h">Verouderd &amp; onoverzichtelijk</div><ul class="t-list"><li class="bad"><span class="ti bad">✕</span>Niet mobielvriendelijk</li><li class="bad"><span class="ti bad">✕</span>Onduidelijke navigatie</li><li class="bad"><span class="ti bad">✕</span>Weinig vertrouwen</li><li class="bad"><span class="ti bad">✕</span>Moeilijk contact opnemen</li></ul></div>
+      <div class="t-card na"><span class="t-badge na">Na</span><div class="t-h">Modern &amp; resultaatgericht</div><ul class="t-list"><li class="good"><span class="ti good">✓</span>Mobielvriendelijk design</li><li class="good"><span class="ti good">✓</span>Duidelijke structuur</li><li class="good"><span class="ti good">✓</span>Professionele uitstraling</li><li class="good"><span class="ti good">✓</span>Makkelijk contact opnemen</li></ul></div>
     </div>
     <div class="comparison-cta reveal"><a href="diensten.html" class="btn-p">Bekijk pakketten →</a></div>
   </div>
@@ -413,12 +469,12 @@
 
 <section class="sec sec-alt process-sec" data-section="Aanpak">
   <div class="max">
-    <div class="center reveal"><span class="stag">Aanpak</span><h2>Hoe we werken</h2><p class="sec-sub" style="margin:0 auto">4 stappen. Geen verrassingen.</p></div>
+    <div class="center reveal"><span class="stag">Aanpak</span><h2>Hoe we werken</h2><p class="sec-sub" style="margin:0 auto">4 duidelijke stappen. Geen verrassingen.</p></div>
     <div class="process-grid reveal">
-      <div class="step"><div class="snum">1<div class="sbadge"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div></div><div><div class="step-h">Kennismaking</div><p class="step-p">We bespreken jouw bedrijf, doelen en wensen. Kosteloos en vrijblijvend.</p></div></div>
-      <div class="step"><div class="snum">2<div class="sbadge"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div></div><div><div class="step-h">Vragenlijst &amp; ontwerp</div><p class="step-p">Korte vragenlijst. Jij vult in wanneer het jou uitkomt.</p></div></div>
-      <div class="step"><div class="snum">3<div class="sbadge"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div></div><div><div class="step-h">Wij realiseren</div><p class="step-p">Binnen 5 werkdagen live. Wij regelen alles: hosting, domein en content.</p></div></div>
-      <div class="step"><div class="snum">4<div class="sbadge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div></div><div><div class="step-h">Live &amp; verder</div><p class="step-p">Jouw website online. Wij blijven bereikbaar voor vragen en aanpassingen.</p></div></div>
+      <div class="step"><div class="snum">1<div class="sbadge"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div></div><div><div class="step-h">Kennismaking</div><p class="step-p">We bespreken je bedrijf, wensen en wat je website moet uitstralen. Kosteloos en vrijblijvend.</p></div></div>
+      <div class="step"><div class="snum">2<div class="sbadge"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div></div><div><div class="step-h">Vragenlijst &amp; richting</div><p class="step-p">Je vult een korte vragenlijst in. Op basis daarvan bepalen we de structuur, uitstraling en inhoud.</p></div></div>
+      <div class="step"><div class="snum">3<div class="sbadge"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div></div><div><div class="step-h">Eerste concept</div><p class="step-p">Binnen 5 werkdagen ontvang je een eerste conceptversie bij complete input.</p></div></div>
+      <div class="step"><div class="snum">4<div class="sbadge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div></div><div><div class="step-h">Live &amp; verder</div><p class="step-p">Na feedback zetten we de website klaar voor livegang en blijven we bereikbaar voor aanpassingen.</p></div></div>
     </div>
   </div>
 </section>
@@ -427,11 +483,11 @@
   <div class="max">
     <div class="cta-wrap reveal">
       <div class="cta-left">
-        <div class="cta-lh">Klaar om online gevonden te worden?</div>
-        <p class="cta-lp">Binnen 24 uur reactie, geen verplichtingen.</p>
+        <div class="cta-lh">Klaar om professioneel online zichtbaar te zijn?</div>
+        <p class="cta-lp">Vertel kort wat je doet en waar je naar op zoek bent. We denken vrijblijvend met je mee.</p>
         <ul class="cta-lc"><li>Binnen 24 uur reactie</li><li>100% vrijblijvend</li><li>Geen verplichtingen</li></ul>
         <div class="cta-trust-pills"><span class="cta-pill">Vrijblijvend advies</span><span class="cta-pill">Binnen 24u reactie</span><span class="cta-pill">Persoonlijk contact</span></div>
-        <div class="cta-quote"><p>"Heldere communicatie, snel schakelen en een website die direct vertrouwen uitstraalt."</p><span>Gebouwd voor ZZP'ers en kleine ondernemers</span></div>
+        <div class="cta-quote"><p>"Heldere communicatie, snel schakelen en een website die direct vertrouwen uitstraalt."</p><span>Gebouwd voor ZZP'ers en groeiende ondernemers</span></div>
       </div>
       <form class="cta-right" name="contact" method="POST" data-netlify="true" netlify>
         <input type="hidden" name="form-name" value="contact">
@@ -449,7 +505,7 @@
 
 <footer class="home-footer">
   <div class="footer-grid">
-    <div><div class="footer-brand"><span>123</span>zzpwebsite<span>.nl</span></div><p class="footer-tagline">Professionele websites voor ZZP'ers en kleine ondernemers. Geen gedoe, gewoon goed geregeld.</p><div class="footer-socials"><a href="#" class="social-btn">f</a><a href="#" class="social-btn">in</a><a href="#" class="social-btn">ig</a></div></div>
+    <div><div class="footer-brand"><span>123</span>zzpwebsite<span>.nl</span></div><p class="footer-tagline">Professionele websites voor ZZP'ers en groeiende ondernemers. Geen gedoe, gewoon goed geregeld.</p><div class="footer-socials"><a href="#" class="social-btn">f</a><a href="#" class="social-btn">in</a><a href="#" class="social-btn">ig</a></div></div>
     <div class="footer-col"><h4>Navigatie</h4><a href="index.html">Home</a><a href="diensten.html">Diensten</a><a href="cases.html">Cases</a><a href="over-ons.html">Over ons</a><a href="contact.html">Contact</a></div>
     <div class="footer-col"><h4>Diensten</h4><a href="diensten.html">Websites laten maken</a><a href="diensten.html">Website verbeteren</a></div>
     <div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.09 6.09l1.95-1.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>06 18 80 25 51</div><div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>jordy@123websitegroep.nl</div></div>
