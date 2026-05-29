@@ -8,14 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  // 2. Cursor spotlight — desktop only
-  const glow = document.getElementById('cursor-glow');
-  if (glow && window.matchMedia('(pointer: fine)').matches) {
-    document.addEventListener('mousemove', (e) => {
-      glow.style.left = e.clientX + 'px';
-      glow.style.top  = e.clientY + 'px';
-    }, { passive: true });
-  }
+  // 2. Cursor ambient glow
+  initCursorGlow();
 
   // 3. Section pill
   const pill = document.getElementById('section-pill');
@@ -118,6 +112,81 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+const CURSOR_HOVER_SEL =
+  'a, button, .btn, input, textarea, select, label, .card, .gc, .p-card, .t-card, .chip, .faq-q, .nav-cta, .social-btn';
+
+/**
+ * Homepage custom cursor accent (dot + ring). Legacy #cursor-glow on other pages.
+ */
+function initCursorGlow() {
+  const accent = document.getElementById('cursor-accent');
+  if (accent) {
+    initCursorAccent(accent);
+    return;
+  }
+
+  const glow = document.getElementById('cursor-glow');
+  if (!glow) return;
+
+  const mqReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const mqFine = window.matchMedia('(pointer: fine)');
+  const mqDesktop = window.matchMedia('(min-width: 769px)');
+  if (mqReduced.matches || !mqFine.matches || !mqDesktop.matches) return;
+
+  document.addEventListener('mousemove', (e) => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  }, { passive: true });
+}
+
+function initCursorAccent(accent) {
+  const mqReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const mqFine = window.matchMedia('(pointer: fine)');
+  const mqDesktop = window.matchMedia('(min-width: 769px)');
+
+  if (!mqFine.matches || !mqDesktop.matches) return;
+
+  const ease = mqReduced.matches ? 0.55 : 0.2;
+  let targetX = -100;
+  let targetY = -100;
+  let currentX = targetX;
+  let currentY = targetY;
+  let rafId = 0;
+
+  const paint = () => {
+    currentX += (targetX - currentX) * ease;
+    currentY += (targetY - currentY) * ease;
+    accent.style.left = currentX + 'px';
+    accent.style.top = currentY + 'px';
+    if (Math.abs(targetX - currentX) > 0.25 || Math.abs(targetY - currentY) > 0.25) {
+      rafId = requestAnimationFrame(paint);
+    } else {
+      currentX = targetX;
+      currentY = targetY;
+      accent.style.left = currentX + 'px';
+      accent.style.top = currentY + 'px';
+      rafId = 0;
+    }
+  };
+
+  const schedule = () => {
+    if (!rafId) rafId = requestAnimationFrame(paint);
+  };
+
+  document.addEventListener('mousemove', (e) => {
+    if (!accent.classList.contains('is-visible')) accent.classList.add('is-visible');
+    targetX = e.clientX;
+    targetY = e.clientY;
+    const hit = document.elementFromPoint(e.clientX, e.clientY);
+    accent.classList.toggle('cursor-accent--hover', !!(hit && hit.closest(CURSOR_HOVER_SEL)));
+    schedule();
+  }, { passive: true });
+
+  document.addEventListener('mouseleave', () => {
+    accent.classList.remove('is-visible', 'cursor-accent--hover');
+  }, { passive: true });
+}
+
 /**
  * Subtle scroll reveal — IntersectionObserver, one-shot, grid stagger.
  * Plain CSS + vanilla JS; respects prefers-reduced-motion.
@@ -134,7 +203,7 @@ function initScrollReveal() {
     ['.trust-strip.reveal', '.ti-item'],
   ];
   const STAGGER_MS = 55;
-  const SKIP_SEL = '.chat-float, nav, .nav-drawer, #scroll-bar, #cursor-glow, #section-pill';
+  const SKIP_SEL = '.chat-float, nav, .nav-drawer, #scroll-bar, #cursor-glow, #cursor-accent, .cursor-accent, #section-pill';
 
   STAGGER_GRIDS.forEach(([gridSel, childSel]) => {
     document.querySelectorAll(gridSel).forEach((grid) => {
