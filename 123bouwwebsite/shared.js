@@ -116,27 +116,13 @@ const CURSOR_HOVER_SEL =
   'a, button, .btn, input, textarea, select, label, .card, .gc, .p-card, .t-card, .chip, .faq-q, .nav-cta, .social-btn';
 
 /**
- * Homepage custom cursor accent (dot + ring). Legacy #cursor-glow on other pages.
+ * Custom cursor accent (dot + ring) — sitewide, desktop pointer only.
  */
 function initCursorGlow() {
   const accent = document.getElementById('cursor-accent');
-  if (accent) {
-    initCursorAccent(accent);
-    return;
-  }
-
-  const glow = document.getElementById('cursor-glow');
-  if (!glow) return;
-
-  const mqReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const mqFine = window.matchMedia('(pointer: fine)');
-  const mqDesktop = window.matchMedia('(min-width: 769px)');
-  if (mqReduced.matches || !mqFine.matches || !mqDesktop.matches) return;
-
-  document.addEventListener('mousemove', (e) => {
-    glow.style.left = e.clientX + 'px';
-    glow.style.top = e.clientY + 'px';
-  }, { passive: true });
+  if (!accent || accent.dataset.cursorAccentInit === '1') return;
+  accent.dataset.cursorAccentInit = '1';
+  initCursorAccent(accent);
 }
 
 function initCursorAccent(accent) {
@@ -201,6 +187,7 @@ function initScrollReveal() {
     ['.guarantee.reveal', '.gu-item'],
     ['.values-list.reveal', '.vc'],
     ['.trust-strip.reveal', '.ti-item'],
+    ['#caseGrid', '.case-card'],
   ];
   const STAGGER_MS = 55;
   const SKIP_SEL = '.chat-float, nav, .nav-drawer, #scroll-bar, #cursor-glow, #cursor-accent, .cursor-accent, #section-pill';

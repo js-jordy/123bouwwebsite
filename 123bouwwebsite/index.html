@@ -294,53 +294,6 @@
 .home-footer .footer-links a{color:rgba(139,163,191,0.78);transition:color .2s ease}
 .home-footer .footer-links a:hover{color:#fff}
 @media(max-width:768px){.cta-wrap{grid-template-columns:1fr !important}.cta-left{padding:32px 22px !important}.cta-right{padding:28px 22px !important}.cta-trust-pills{gap:7px}.cta-pill{font-size:10px}.cta-quote{padding:14px 15px}.contact-sec .form-row{grid-template-columns:1fr !important;gap:0}.home-footer{padding-top:0}.home-footer .footer-grid{gap:0;margin-bottom:0}.footer-grid > div:first-child{padding:36px 20px 24px}}
-/* Homepage custom cursor accent */
-.cursor-accent{
-  position:fixed;
-  top:0;
-  left:0;
-  pointer-events:none;
-  z-index:150;
-  transform:translate(-50%,-50%);
-  opacity:0;
-  transition:opacity .25s ease;
-  will-change:left,top;
-}
-.cursor-accent.is-visible{opacity:1}
-.cursor-dot,.cursor-ring{
-  position:absolute;
-  top:50%;
-  left:50%;
-  border-radius:50%;
-  transform:translate(-50%,-50%);
-  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,opacity .22s ease;
-}
-.cursor-dot{
-  width:9px;
-  height:9px;
-  background:linear-gradient(145deg,var(--orange2),var(--orange));
-  box-shadow:0 0 10px rgba(240,98,10,0.55),0 0 2px rgba(255,255,255,0.25);
-}
-.cursor-ring{
-  width:34px;
-  height:34px;
-  border:1.5px solid rgba(240,98,10,0.72);
-  box-shadow:0 0 14px rgba(240,98,10,0.35),inset 0 0 8px rgba(240,98,10,0.08);
-  background:rgba(240,98,10,0.04);
-}
-.cursor-accent--hover .cursor-ring{
-  transform:translate(-50%,-50%) scale(1.32);
-  border-color:rgba(255,121,32,0.95);
-  box-shadow:0 0 22px rgba(240,98,10,0.52),inset 0 0 10px rgba(240,98,10,0.12);
-}
-.cursor-accent--hover .cursor-dot{
-  transform:translate(-50%,-50%) scale(1.12);
-  box-shadow:0 0 14px rgba(240,98,10,0.7),0 0 3px rgba(255,255,255,0.3);
-}
-@media(max-width:768px){.cursor-accent{display:none!important}}
-@media(prefers-reduced-motion:reduce){
-  .cursor-accent,.cursor-dot,.cursor-ring{transition-duration:.01ms!important}
-}
 </style>
 </head>
 <body>
@@ -364,7 +317,7 @@
     <li><a href="contact.html">Contact</a></li>
   </ul>
   <button class="nav-menu-btn" aria-label="Menu"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-  <a href="contact.html" class="nav-cta">Website aanvragen →</a>
+  <a href="contact.html" class="nav-cta">Gratis websiteadvies →</a>
 </nav>
 <div class="nav-drawer">
   <div class="drawer-header">
@@ -378,7 +331,7 @@
     <a href="over-ons.html">Over ons</a>
     <a href="contact.html">Contact</a>
   </div>
-  <div class="drawer-cta-wrap"><a href="contact.html" class="drawer-cta">Website aanvragen →</a></div>
+  <div class="drawer-cta-wrap"><a href="contact.html" class="drawer-cta">Gratis websiteadvies →</a></div>
 </div>
 
 <section id="hero" data-section="Home">
@@ -394,7 +347,7 @@
         <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Duidelijk, betrouwbaar en goed op mobiel</li>
       </ul>
       <div class="hero-btns">
-        <a href="contact.html" class="btn-p">Website aanvragen</a>
+        <a href="contact.html" class="btn-p">Gratis websiteadvies</a>
         <a href="cases.html" class="btn-s">Bekijk voorbeelden</a>
       </div>
     </div>
