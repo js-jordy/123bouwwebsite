@@ -269,24 +269,32 @@ body.case-modal-open{overflow:hidden}
   .cta-btns a{width:100% !important;justify-content:center !important}
   /* Contact page */
   .contact-main{grid-template-columns:1fr !important;gap:20px !important}
-  /* Featured case */
-  .feat-case{grid-template-columns:1fr !important;gap:20px !important}
   /* Cases */
-  .cases-grid{grid-template-columns:1fr !important}
-  .hero-cases{padding:44px 20px 36px !important}
-  .hero-cases-inner{grid-template-columns:1fr !important;gap:32px !important}
+  .cases-grid{grid-template-columns:1fr !important;width:100% !important;max-width:100% !important}
+  .hero-cases{padding:44px 20px 32px !important}
+  .hero-cases-inner{grid-template-columns:1fr !important;gap:0 !important}
+  .hero-cases-inner > div:last-child{display:none !important}
   .site-mock--hero .sm-hero-img{min-height:48px;background-position:68% center}
-  .filter-bar{padding:14px 20px !important;top:66px}
-  .featured-section{padding:40px 20px !important}
-  .featured-card{grid-template-columns:1fr !important;gap:24px !important;padding:24px !important}
+  .filter-bar{padding:14px 0 !important;top:66px;overflow-x:clip}
+  .filter-inner{flex-wrap:nowrap !important;overflow-x:auto !important;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:100% !important;width:100% !important;margin:0 !important;padding:0 20px 6px !important;gap:8px !important}
+  .filter-inner::-webkit-scrollbar{display:none}
+  .filter-btn{flex-shrink:0 !important}
+  .featured-section{padding:40px 20px !important;overflow-x:clip}
+  .featured-section > div{width:100% !important;max-width:100% !important;margin:0 auto !important;box-sizing:border-box !important}
+  .featured-card{grid-template-columns:1fr !important;gap:24px !important;padding:24px 20px !important;width:100% !important;max-width:100% !important;min-width:0 !important;box-sizing:border-box !important}
+  .feat-img,.feat-img-inner,.featured-copy{width:100% !important;max-width:100% !important;min-width:0 !important;box-sizing:border-box !important}
+  .feat-img-inner{width:100% !important}
   .feat-mock-preview{background-position:center 12%}
+  .feat-stats{grid-template-columns:1fr !important;gap:8px !important;width:100% !important}
+  .feat-stat{width:100% !important;box-sizing:border-box !important}
+  .feat-name,.feat-desc,.feat-detail,#featDetails{max-width:100% !important;min-width:0 !important;overflow-wrap:break-word !important;word-wrap:break-word !important}
   .case-mock-preview{background-position:center 10%}
   .case-cat{top:10px;left:10px;font-size:12px;padding:6px 14px;color:#fff;background:#101a2c;border:1px solid rgba(255,255,255,0.26);box-shadow:0 3px 14px rgba(0,0,0,0.55),0 0 0 1px rgba(240,98,10,0.18),0 0 20px rgba(240,98,10,0.12)}
   .case-body{padding:16px 18px 18px}
   .case-name{font-size:16px}
   .case-stat{font-size:13px;color:rgba(220,232,245,0.95)}
-  .feat-stats{grid-template-columns:1fr 1fr !important}
-  .cases-section{padding:40px 20px 48px !important}
+  .cases-section{padding:40px 20px 48px !important;overflow-x:clip}
+  #voorbeelden{scroll-margin-top:128px}
   .trust-section{padding:48px 20px !important}
   .trust-grid{grid-template-columns:1fr !important}
   .cases-cta-btns{flex-direction:column !important;align-items:stretch !important}
@@ -357,6 +365,7 @@ body.case-modal-open{overflow:hidden}
     <a href="over-ons.html">Over ons</a>
     <a href="contact.html">Contact</a>
   </div>
+  <div class="drawer-cta-wrap"><a href="contact.html" class="drawer-cta">Gratis websiteadvies →</a></div>
 </div>
 
 <section class="hero-cases" data-section="Voorbeelden">
@@ -506,6 +515,27 @@ function filterCases(cat, btn) {
   btn.classList.add('active');
   document.querySelectorAll('.case-card').forEach(card => {
     card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+  });
+
+  if (btn && btn.scrollIntoView) {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    btn.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', inline: 'center', block: 'nearest' });
+  }
+
+  var section = document.getElementById('voorbeelden');
+  if (!section) return;
+
+  var scrollToGrid = function () {
+    var nav = document.querySelector('nav');
+    var filterBar = document.querySelector('.filter-bar');
+    var offset = (nav ? nav.offsetHeight : 66) + (filterBar ? filterBar.offsetHeight : 52) + 12;
+    var top = section.getBoundingClientRect().top + window.pageYOffset - offset;
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: Math.max(0, top), behavior: reducedMotion ? 'auto' : 'smooth' });
+  };
+
+  requestAnimationFrame(function () {
+    requestAnimationFrame(scrollToGrid);
   });
 }
 

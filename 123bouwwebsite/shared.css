@@ -288,6 +288,9 @@ footer{background:linear-gradient(180deg,#080f18 0%,#060D18 100%);border-top:1px
   /* HIDE desktop-only */
   #section-pill{display:none}
   .cursor-accent{display:none!important}
+
+  /* FLOATING CHAT — safe area */
+  .chat-float{bottom:calc(20px + env(safe-area-inset-bottom,0px));right:calc(20px + env(safe-area-inset-right,0px))}
 }
 
 @media(max-width:480px){

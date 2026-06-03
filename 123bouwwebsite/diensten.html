@@ -122,11 +122,13 @@
   /* Stats */
   .stats-grid{grid-template-columns:1fr 1fr !important}
   /* Pricing */
-  .pricing-grid{grid-template-columns:1fr !important;gap:16px !important}
-  .p-card,.p-card.popular{margin:0 !important;padding:32px 22px !important}
-  .p-card.popular{margin-top:18px !important}
+  .pricing-section{padding:48px 20px 52px !important;overflow-x:clip}
+  .pricing-section > div{max-width:100% !important;width:100% !important;margin:0 auto !important;box-sizing:border-box !important}
+  .pricing-grid{grid-template-columns:1fr !important;gap:16px !important;width:100% !important;max-width:100% !important;margin:0 auto !important;justify-items:stretch !important;overflow:hidden !important}
+  .p-card,.p-card.popular{width:100% !important;max-width:100% !important;min-width:0 !important;margin:0 !important;padding:32px 22px !important;box-sizing:border-box !important}
+  .p-card.popular{margin-top:18px !important;overflow:visible !important}
   .p-desc{min-height:0 !important}
-  .pricing-trust{margin-top:16px !important;padding:0 4px !important}
+  .pricing-trust{margin-top:16px !important;padding:0 !important;max-width:100% !important}
   .pricing-trust span{width:100% !important;justify-content:center !important;text-align:center !important}
   .faq-section{padding:48px 20px 56px !important}
   .faq-panel{padding:6px 16px !important;border-radius:14px !important}
@@ -149,6 +151,10 @@
   .footer-col a::after{content:'›' !important;color:var(--muted) !important;font-size:18px !important}
   .footer-bottom{padding:20px !important;flex-direction:column !important;gap:10px !important;text-align:center !important}
   .footer-links{justify-content:center !important}
+  .cta-band{margin:20px 20px 40px !important;padding:28px 20px !important;flex-direction:column !important;align-items:stretch !important;gap:18px !important;max-width:calc(100% - 40px) !important;box-sizing:border-box !important}
+  .cta-band > div:first-child{min-width:0 !important;width:100% !important}
+  .cta-band-btns{flex-direction:column !important;flex-shrink:1 !important;width:100% !important;gap:10px !important}
+  .cta-band-btns .btn-p,.cta-band-btns .btn-s{width:100% !important;justify-content:center !important;box-sizing:border-box !important}
 }
 @media(max-width:480px){
   section.sec,.sec{padding:40px 16px !important}
@@ -185,6 +191,7 @@
     <a href="over-ons.html">Over ons</a>
     <a href="contact.html">Contact</a>
   </div>
+  <div class="drawer-cta-wrap"><a href="contact.html" class="drawer-cta">Gratis websiteadvies →</a></div>
 </div>
 
 <section class="hero-pricing" data-section="Pakketten">
