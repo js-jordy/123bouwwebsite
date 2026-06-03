@@ -191,14 +191,15 @@
     </div>
     <div class="form-card reveal">
       <div class="form-top"><div class="form-title-text">Vertel kort wat je zoekt</div><div class="form-sub-text">Of je nu een nieuwe website wilt of je huidige site wilt verbeteren: ik reageer binnen 24 uur.</div></div>
-      <div class="form-body">
-        <div class="form-row"><div class="fg"><label class="fl">Naam</label><input type="text" class="fi" placeholder="Jan de Vries"></div><div class="fg"><label class="fl">E-mail</label><input type="email" class="fi" placeholder="jan@bedrijf.nl"></div></div>
-        <div class="form-row"><div class="fg"><label class="fl">Telefoonnummer</label><input type="tel" class="fi" placeholder="06 12 34 56 78"></div><div class="fg"><label class="fl">Bedrijfsnaam</label><input type="text" class="fi" placeholder="Jouw bedrijfsnaam"></div></div>
-        <div class="fg"><label class="fl">Website URL (optioneel)</label><input type="url" class="fi" placeholder="www.jouwbedrijf.nl"></div>
-        <div class="fg"><label class="fl">Bericht</label><textarea class="fi" rows="5" placeholder="Vertel ons over jouw bedrijf en wensen..."></textarea></div>
-        <button class="fsub-btn">Stuur mijn bericht →</button>
+      <form class="form-body" name="contact" method="POST" data-netlify="true" netlify>
+        <input type="hidden" name="form-name" value="contact">
+        <div class="form-row"><div class="fg"><label class="fl">Naam</label><input type="text" class="fi" name="naam" placeholder="Jan de Vries"></div><div class="fg"><label class="fl">E-mail</label><input type="email" class="fi" name="e-mail" placeholder="jan@bedrijf.nl"></div></div>
+        <div class="form-row"><div class="fg"><label class="fl">Telefoonnummer</label><input type="tel" class="fi" name="telefoon" placeholder="06 12 34 56 78"></div><div class="fg"><label class="fl">Bedrijfsnaam</label><input type="text" class="fi" name="bedrijfsnaam" placeholder="Jouw bedrijfsnaam"></div></div>
+        <div class="fg"><label class="fl">Website URL (optioneel)</label><input type="url" class="fi" name="website" placeholder="www.jouwbedrijf.nl"></div>
+        <div class="fg"><label class="fl">Bericht</label><textarea class="fi" name="bericht" rows="5" placeholder="Vertel ons over jouw bedrijf en wensen..."></textarea></div>
+        <button class="fsub-btn" type="submit">Stuur mijn bericht →</button>
         <div class="fnote"><svg viewBox="0 0 24 24" width="12" height="12" style="stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>100% vrijblijvend · Jouw gegevens zijn veilig</div>
-      </div>
+      </form>
     </div>
   </div>
 </section>
