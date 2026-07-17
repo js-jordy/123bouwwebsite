@@ -8,78 +8,58 @@
 <meta name="description" content="Heldere websitepakketten voor ZZP'ers en kleine ondernemers. Professioneel online, zonder technisch gedoe.">
 <link rel="stylesheet" href="shared.css">
 <style>
-.hero-pricing{padding:52px 48px 48px;text-align:center;position:relative;overflow:hidden;background:radial-gradient(ellipse 60% 60% at 50% 0%,rgba(240,98,10,0.08),transparent 70%),linear-gradient(180deg,var(--navy) 0%,var(--navy2) 100%)}
-.hero-pricing .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.018) 1px,transparent 1px);background-size:48px 48px;-webkit-mask-image:radial-gradient(ellipse 70% 80% at 50% 0%,black,transparent);mask-image:radial-gradient(ellipse 70% 80% at 50% 0%,black,transparent)}
-.pricing-section{padding:64px 48px 68px;background:radial-gradient(ellipse 70% 48% at 50% 12%,rgba(240,98,10,0.06),transparent 68%),var(--navy2);position:relative;overflow:hidden}
-.pricing-section::before{content:'';position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:min(1040px,92vw);height:520px;background:radial-gradient(ellipse 56% 46% at 50% 50%,rgba(240,98,10,0.055),transparent 72%);pointer-events:none}
+.hero-pricing{padding:52px 48px 48px;text-align:center;position:relative;overflow:hidden;background:var(--bg-page)}
+.pricing-section{padding:64px 48px 68px;background:var(--bg-section-alt);position:relative;overflow:hidden}
 .pricing-section > div{position:relative;z-index:1}
 .pricing-grid{display:grid;grid-template-columns:1fr 1.08fr 1fr;gap:14px;align-items:stretch;max-width:1060px;margin:12px auto 0;overflow:visible}
-.p-card{position:relative;overflow:hidden;background:linear-gradient(160deg,rgba(24,32,48,0.98),rgba(15,24,38,0.98));border:1px solid rgba(255,255,255,0.085);border-radius:18px;padding:34px 30px;display:flex;flex-direction:column;box-shadow:0 8px 30px rgba(0,0,0,0.24),inset 0 1px 0 rgba(255,255,255,0.045);transition:transform .32s ease,box-shadow .32s ease,border-color .32s ease,background .32s ease}
-.p-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 78% 54% at 16% 0%,rgba(240,98,10,0.055),transparent 60%),linear-gradient(180deg,rgba(255,255,255,0.025),transparent 42%);pointer-events:none;opacity:.8;transition:opacity .32s ease}
-.p-card::after{content:'';position:absolute;left:24px;right:24px;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.16),transparent);opacity:.75;pointer-events:none}
-.p-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,0.14);box-shadow:0 18px 46px rgba(0,0,0,0.32),0 0 24px rgba(240,98,10,0.045),inset 0 1px 0 rgba(255,255,255,0.06)}
-.p-card.popular{overflow:visible;background:linear-gradient(160deg,rgba(17,34,56,0.98),rgba(21,36,54,1),rgba(14,24,39,1));border:1.5px solid rgba(240,98,10,0.42);border-radius:22px;z-index:2;margin:-10px 0;padding:42px 34px;box-shadow:0 22px 62px rgba(0,0,0,0.34),0 0 54px rgba(240,98,10,0.12),inset 0 1px 0 rgba(255,255,255,0.075)}
-.p-card.popular::before{background:radial-gradient(ellipse 74% 58% at 50% 0%,rgba(240,98,10,0.14),transparent 64%),linear-gradient(180deg,rgba(255,255,255,0.04),transparent 40%);opacity:1}
-.p-card.popular::after{background:linear-gradient(90deg,transparent,rgba(240,98,10,0.68),rgba(255,255,255,0.15),transparent);opacity:1}
-.p-card.popular:hover{transform:translateY(-6px);border-color:rgba(240,98,10,0.58);box-shadow:0 28px 72px rgba(0,0,0,0.4),0 0 66px rgba(240,98,10,0.16),inset 0 1px 0 rgba(255,255,255,0.09)}
-.pop-badge{position:absolute;top:-16px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--orange),var(--orange2));color:#fff;padding:6px 17px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.5px;display:flex;align-items:center;gap:5px;white-space:nowrap;box-shadow:0 8px 22px rgba(240,98,10,0.34),inset 0 1px 0 rgba(255,255,255,0.16);z-index:3}
+.p-card{position:relative;overflow:hidden;background:var(--surface-card);border:1px solid var(--border-card);border-radius:18px;padding:34px 30px;display:flex;flex-direction:column;box-shadow:var(--shadow-soft);transition:transform .32s ease,box-shadow .32s ease,border-color .32s ease}
+.p-card:hover{transform:translateY(-4px);border-color:rgba(11,18,32,0.14);box-shadow:var(--shadow-card)}
+.p-card.popular{overflow:visible;background:var(--surface-card);border:1.5px solid rgba(240,98,10,0.38);border-radius:22px;z-index:2;margin:-10px 0;padding:42px 34px;box-shadow:0 8px 32px rgba(240,98,10,0.1),var(--shadow-card)}
+.p-card.popular:hover{transform:translateY(-6px);border-color:rgba(240,98,10,0.5);box-shadow:0 12px 40px rgba(240,98,10,0.12),var(--shadow-card)}
+.pop-badge{position:absolute;top:-16px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--orange),var(--orange2));color:#fff;padding:6px 17px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.5px;display:flex;align-items:center;gap:5px;white-space:nowrap;box-shadow:0 4px 16px rgba(240,98,10,0.28);z-index:3}
 .pop-badge::before{content:'★';font-size:10px}
 .p-tier{position:relative;z-index:1;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
-.p-name{position:relative;z-index:1;font-family:var(--serif);font-size:25px;color:#fff;margin-bottom:8px;line-height:1.1}
+.p-name{position:relative;z-index:1;font-family:var(--serif);font-size:25px;color:var(--text-primary);margin-bottom:8px;line-height:1.1}
 .p-card.popular .p-name{font-size:27px}
-.p-desc{position:relative;z-index:1;font-size:12px;color:rgba(139,163,191,0.94);line-height:1.65;margin-bottom:24px;font-weight:300;min-height:40px}
-.p-price-wrap{position:relative;z-index:1;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.075)}
+.p-desc{position:relative;z-index:1;font-size:12px;color:var(--text-secondary);line-height:1.65;margin-bottom:24px;font-weight:300;min-height:40px}
+.p-price-wrap{position:relative;z-index:1;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border-light)}
 .p-price{display:flex;align-items:baseline;gap:3px;margin-bottom:4px}
-.p-currency{font-size:19px;font-weight:600;color:rgba(255,255,255,0.95);margin-top:4px}
-.p-amount{font-family:var(--serif);font-size:46px;color:#fff;line-height:1;letter-spacing:-.02em}
-.p-card.popular .p-amount{font-size:50px;color:var(--orange2)}
-.p-card.premium .p-amount{color:#fff}
-.p-period{display:block;font-size:12px;color:var(--pale);margin-top:2px;font-weight:300}
-.p-hosting{margin-top:12px;display:flex;flex-direction:column;gap:5px}
-.p-hosting-main{font-size:11px;color:rgba(200,216,232,0.9);font-weight:500;line-height:1.45}
-.p-hosting-sub{font-size:11px;color:var(--muted);font-weight:300;line-height:1.45}
-.p-card.premium .p-hosting-main{color:rgba(200,216,232,0.94)}
-.p-card.premium .p-hosting-sub{color:rgba(139,163,191,0.88)}
+.p-currency{font-size:19px;font-weight:600;color:var(--text-primary);margin-top:4px}
+.p-amount{font-family:var(--serif);font-size:46px;color:var(--text-primary);line-height:1;letter-spacing:-.02em}
+.p-card.popular .p-amount{font-size:50px;color:var(--orange)}
+.p-period{display:block;font-size:12px;color:var(--text-muted);margin-top:2px;font-weight:300}
 .p-features{position:relative;z-index:1;list-style:none;display:flex;flex-direction:column;gap:10px;flex:1;margin-bottom:26px}
-.p-features li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:rgba(200,216,232,0.94);line-height:1.48}
-.pf-chk{width:18px;height:18px;border-radius:50%;flex-shrink:0;margin-top:1px;background:linear-gradient(145deg,rgba(240,98,10,0.16),rgba(240,98,10,0.06));border:1px solid rgba(240,98,10,0.3);display:flex;align-items:center;justify-content:center;box-shadow:0 0 12px rgba(240,98,10,0.06)}
-.p-card.popular .pf-chk{background:linear-gradient(145deg,rgba(240,98,10,0.26),rgba(240,98,10,0.11));border-color:rgba(240,98,10,0.52);box-shadow:0 0 16px rgba(240,98,10,0.12)}
-.pf-chk svg{width:8px;height:8px;stroke:var(--orange2);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.p-testimonial{font-size:11px;color:var(--muted);font-style:italic;margin-bottom:16px;padding:10px 12px;border-left:2px solid rgba(240,98,10,0.3);background:rgba(240,98,10,0.04);border-radius:0 6px 6px 0}
-.p-cta{position:relative;z-index:1;display:block;text-align:center;text-decoration:none;padding:14px 20px;border-radius:10px;font-size:13px;font-weight:600;border:1px solid rgba(255,255,255,0.14);color:var(--light);background:rgba(255,255,255,0.035);transition:transform .22s ease,border-color .22s ease,color .22s ease,background .22s ease,box-shadow .22s ease;margin-top:auto}
-.p-cta:hover{border-color:rgba(255,255,255,0.26);color:#fff;background:rgba(255,255,255,0.06);transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,0.18)}
-.p-cta.primary{background:linear-gradient(135deg,var(--orange),var(--orange2));color:#fff;border-color:transparent;box-shadow:0 10px 28px rgba(240,98,10,0.28),inset 0 1px 0 rgba(255,255,255,0.15)}
-.p-cta.primary:hover{box-shadow:0 14px 34px rgba(240,98,10,0.34),inset 0 1px 0 rgba(255,255,255,0.18);filter:saturate(1.05)}
-.p-cta.dark{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);color:#fff}
-.pricing-trust{max-width:1040px;margin:18px auto 0;text-align:center;font-size:12px;color:rgba(139,163,191,0.82);letter-spacing:.1px}
-.pricing-trust span{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:100px;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07)}
-.pricing-trust span::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--orange);box-shadow:0 0 10px rgba(240,98,10,0.45)}
-.guarantee{border-radius:14px;padding:26px 32px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px;max-width:1040px;margin-left:auto;margin-right:auto}
-.gu-item{display:flex;align-items:center;gap:12px}
-.gu-icon{width:36px;height:36px;border-radius:8px;background:rgba(240,98,10,0.1);border:1px solid rgba(240,98,10,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.gu-icon svg{width:15px;height:15px;stroke:var(--orange);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.gu-text{font-size:12px;font-weight:600;color:#fff;line-height:1.3}
-.gu-sub{font-size:11px;color:var(--pale);margin-top:1px}
-.faq-section{padding:60px 48px 72px;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(240,98,10,0.04),transparent 65%),var(--navy);position:relative;overflow:hidden}
-.faq-section::before{content:'';position:absolute;left:50%;top:18%;transform:translate(-50%,-50%);width:min(760px,90vw);height:360px;background:radial-gradient(ellipse 58% 48% at 50% 50%,rgba(240,98,10,0.045),transparent 72%);pointer-events:none}
+.p-features li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-secondary);line-height:1.48}
+.pf-chk{width:18px;height:18px;border-radius:50%;flex-shrink:0;margin-top:1px;background:rgba(240,98,10,0.08);border:1px solid rgba(240,98,10,0.22);display:flex;align-items:center;justify-content:center}
+.p-card.popular .pf-chk{background:rgba(240,98,10,0.12);border-color:rgba(240,98,10,0.35)}
+.pf-chk svg{width:8px;height:8px;stroke:var(--orange);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.p-cta{position:relative;z-index:1;display:block;text-align:center;text-decoration:none;padding:14px 20px;border-radius:10px;font-size:13px;font-weight:600;border:1px solid var(--border-card);color:var(--text-primary);background:transparent;transition:transform .22s ease,border-color .22s ease,color .22s ease,background .22s ease,box-shadow .22s ease;margin-top:auto}
+.p-cta:hover{border-color:rgba(11,18,32,0.2);color:var(--text-primary);background:rgba(11,18,32,0.04);transform:translateY(-2px);box-shadow:0 4px 12px rgba(11,18,32,0.06)}
+.p-cta.primary{background:linear-gradient(135deg,var(--orange),var(--orange2));color:#fff;border-color:transparent;box-shadow:0 4px 16px rgba(240,98,10,0.24)}
+.p-cta.primary:hover{box-shadow:0 6px 22px rgba(240,98,10,0.32);filter:saturate(1.05)}
+.p-cta.dark{color:var(--text-primary);border-color:var(--border-card);background:transparent}
+.p-cta.dark:hover{color:var(--text-primary);border-color:rgba(11,18,32,0.2);background:rgba(11,18,32,0.04)}
+.faq-section{padding:60px 48px 72px;background:var(--bg-section-alt);position:relative;overflow:hidden}
 .faq-max{position:relative;z-index:1;max-width:740px;margin:0 auto}
 .faq-header{margin-bottom:32px}
-.faq-panel{background:linear-gradient(160deg,rgba(24,32,48,0.96),rgba(15,24,38,0.98));border:1px solid rgba(255,255,255,0.085);border-radius:18px;padding:10px 24px;box-shadow:0 12px 40px rgba(0,0,0,0.22),inset 0 1px 0 rgba(255,255,255,0.05)}
-.faq-item{border-bottom:1px solid rgba(255,255,255,0.06);transition:background .28s ease,border-color .28s ease}
+.faq-panel{background:var(--surface-card);border:1px solid var(--border-card);border-radius:18px;padding:10px 24px;box-shadow:var(--shadow-soft)}
+.faq-item{border-bottom:1px solid var(--border-light);transition:background .28s ease}
 .faq-item:last-child{border-bottom:none}
-.faq-item:hover{background:rgba(255,255,255,0.02)}
+.faq-item:hover{background:rgba(11,18,32,0.02)}
 .faq-item:has(.faq-q.open){background:rgba(240,98,10,0.03)}
-.faq-q{font-size:14px;font-weight:600;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;user-select:none;padding:18px 2px;transition:color .28s ease}
-.faq-q:hover{color:rgba(255,255,255,0.96)}
-.faq-q svg{width:14px;height:14px;padding:7px;stroke:var(--orange2);fill:none;stroke-width:2.2;stroke-linecap:round;flex-shrink:0;background:linear-gradient(145deg,rgba(240,98,10,0.14),rgba(240,98,10,0.06));border:1px solid rgba(240,98,10,0.24);border-radius:50%;box-sizing:content-box;transition:transform .32s ease,background .32s ease,border-color .32s ease,box-shadow .32s ease}
-.faq-q:hover svg{background:rgba(240,98,10,0.18);border-color:rgba(240,98,10,0.36);box-shadow:0 0 10px rgba(240,98,10,0.08)}
-.faq-q.open svg{transform:rotate(45deg);background:rgba(240,98,10,0.22);border-color:rgba(240,98,10,0.45)}
-.faq-a{font-size:13px;color:rgba(139,163,191,0.94);line-height:1.72;font-weight:300;max-height:0;overflow:hidden;opacity:0;transition:max-height .38s ease,margin .28s ease,padding .28s ease,opacity .28s ease}
+.faq-q{font-size:14px;font-weight:600;color:var(--text-primary);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;user-select:none;padding:18px 2px;transition:color .28s ease}
+.faq-q:hover{color:var(--text-primary)}
+.faq-q svg{width:14px;height:14px;padding:7px;stroke:var(--orange);fill:none;stroke-width:2.2;stroke-linecap:round;flex-shrink:0;background:rgba(240,98,10,0.08);border:1px solid rgba(240,98,10,0.2);border-radius:50%;box-sizing:content-box;transition:transform .32s ease,background .32s ease,border-color .32s ease}
+.faq-q:hover svg{background:rgba(240,98,10,0.12);border-color:rgba(240,98,10,0.3)}
+.faq-q.open svg{transform:rotate(45deg);background:rgba(240,98,10,0.16);border-color:rgba(240,98,10,0.38)}
+.faq-a{font-size:13px;color:var(--text-secondary);line-height:1.72;font-weight:300;max-height:0;overflow:hidden;opacity:0;transition:max-height .38s ease,margin .28s ease,padding .28s ease,opacity .28s ease}
 .faq-a.open{margin-top:0;padding:0 2px 18px 4px;opacity:1}
 .cta-band{margin:0 48px 52px;background:linear-gradient(135deg,#0F1E32,#152436);border:1px solid rgba(240,98,10,0.2);border-radius:16px;padding:40px 48px;display:flex;align-items:center;justify-content:space-between;gap:32px}
 .cta-band h3{font-family:var(--serif);font-size:clamp(20px,2.5vw,28px);color:#fff;margin-bottom:5px}
 .cta-band p{font-size:13px;color:var(--pale);font-weight:300}
 .cta-band-btns{display:flex;gap:12px;flex-shrink:0}
+.cta-band .btn-s{color:#fff;border-color:rgba(255,255,255,0.28);background:transparent}
+.cta-band .btn-s:hover{color:#fff;border-color:rgba(255,255,255,0.45);background:rgba(255,255,255,0.08)}
 
 /* ── BEAUTIFUL MOBILE OVERRIDES ── */
 @media(max-width:768px){
@@ -128,8 +108,6 @@
   .p-card,.p-card.popular{width:100% !important;max-width:100% !important;min-width:0 !important;margin:0 !important;padding:32px 22px !important;box-sizing:border-box !important}
   .p-card.popular{margin-top:18px !important;overflow:visible !important}
   .p-desc{min-height:0 !important}
-  .pricing-trust{margin-top:16px !important;padding:0 !important;max-width:100% !important}
-  .pricing-trust span{width:100% !important;justify-content:center !important;text-align:center !important}
   .faq-section{padding:48px 20px 56px !important}
   .faq-panel{padding:6px 16px !important;border-radius:14px !important}
   .faq-q{padding:16px 0 !important;font-size:13px !important;gap:12px !important}
@@ -195,7 +173,6 @@
 </div>
 
 <section class="hero-pricing" data-section="Pakketten">
-  <div class="hero-grid"></div>
   <div style="position:relative;z-index:1;max-width:640px;margin:0 auto">
     <span class="stag">Pakketten</span>
     <h1 class="sec-h">Heldere pakketten,<br><span style="color:var(--orange);font-style:italic">geen verrassingen.</span></h1>
@@ -209,68 +186,55 @@
       <div class="p-card">
         <div class="p-tier">STARTER</div>
         <div class="p-name">Starter</div>
-        <p class="p-desc">Voor ondernemers die compact en professioneel online zichtbaar willen zijn.</p>
+        <p class="p-desc">Voor ondernemers die snel professioneel online zichtbaar willen zijn.</p>
         <div class="p-price-wrap">
           <div class="p-price"><span class="p-currency">€</span><span class="p-amount">499</span></div>
           <div class="p-period">eenmalig</div>
-          <div class="p-hosting">
-            <div class="p-hosting-main">Websitebeheer &amp; onderhoud optioneel vanaf €49 p/m</div>
-          </div>
         </div>
         <ul class="p-features">
-          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>1 compacte websitepagina</li>
-          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Aanleveren via online formulier</li>
-          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Mobielvriendelijk en snel</li>
-          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Klikbaar bellen en e-mailen</li>
-          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Duidelijke basisopbouw</li>
-          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Eerste concept binnen 5 werkdagen bij complete input</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>1 professionele webpagina</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Contactformulier</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Mobielvriendelijk ontwerp</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Basis SEO</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Eerste concept binnen 5 werkdagen</li>
         </ul>
         <a href="contact.html" class="p-cta">Gratis websiteadvies →</a>
       </div>
       <div class="p-card popular" style="position:relative">
-        <div class="pop-badge">Aanbevolen</div>
-        <div class="p-tier">AANBEVOLEN</div>
+        <div class="pop-badge">Meest gekozen</div>
+        <div class="p-tier">PROFESSIONEEL</div>
         <div class="p-name">Professioneel</div>
-        <p class="p-desc">Voor ondernemers die hun bedrijf duidelijker, betrouwbaarder en completer willen presenteren.</p>
+        <p class="p-desc">Voor ondernemers die nét wat meer uit hun website willen halen.</p>
         <div class="p-price-wrap">
           <div class="p-price"><span class="p-currency">€</span><span class="p-amount">899</span></div>
           <div class="p-period">eenmalig</div>
-          <div class="p-hosting">
-            <div class="p-hosting-main">Websitebeheer &amp; onderhoud optioneel vanaf €49 p/m</div>
-          </div>
         </div>
         <ul class="p-features">
-          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Online intake</li>
-          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Tot 4 pagina’s</li>
-          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Teksten op basis van jouw input</li>
-          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Contactformulier</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Alles van Starter</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Tot 4 webpagina's</li>
           <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>WhatsApp-knop</li>
-          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Mobielvriendelijk en snel</li>
-          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Eerste concept binnen 5 werkdagen bij complete input</li>
-          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>30 dagen kleine aanpassingen</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Google Maps integratie</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Projectenpagina of fotogalerij</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Uitgebreide SEO</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Dynamische elementen</li>
         </ul>
         <a href="contact.html" class="p-cta primary">Gratis websiteadvies →</a>
       </div>
       <div class="p-card premium">
-        <div class="p-tier" style="color:var(--pale)">PREMIUM</div>
+        <div class="p-tier">PREMIUM</div>
         <div class="p-name">Volledig ontzorgd</div>
-        <p class="p-desc">Voor wie alles netjes geregeld wil hebben, met extra aandacht voor structuur, inhoud en begeleiding.</p>
+        <p class="p-desc">Voor ondernemers die alles in één keer goed geregeld willen hebben.</p>
         <div class="p-price-wrap">
-          <div class="p-price"><span class="p-currency" style="color:var(--orange)">€</span><span class="p-amount" style="color:var(--orange)">1.399</span></div>
+          <div class="p-price"><span class="p-currency">€</span><span class="p-amount">1.399</span></div>
           <div class="p-period">eenmalig</div>
-          <div class="p-hosting">
-            <div class="p-hosting-main">Inclusief 3 maanden websitebeheer &amp; onderhoud</div>
-            <div class="p-hosting-sub">Daarna optioneel vanaf €49 p/m</div>
-          </div>
         </div>
         <ul class="p-features">
           <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Alles van Professioneel</li>
-          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Extra pagina of projectsectie</li>
-          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Aanvraagformulier afgestemd op jouw werkzaamheden</li>
-          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Google Bedrijfsprofiel basis ingericht/gecontroleerd</li>
-          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Extra correctieronde</li>
-          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>3 maanden websitebeheer &amp; onderhoud inbegrepen</li>
-          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Jaarlijkse gratis websitecheck</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Extra pagina op maat</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Google Bedrijfsprofiel ingericht</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Google Analytics &amp; Search Console ingericht</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>Offerte- of aanvraagformulier op maat</li>
+          <li><span class="pf-chk"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>3 maanden technisch onderhoud</li>
         </ul>
         <a href="contact.html" class="p-cta dark">Gratis websiteadvies →</a>
       </div>
@@ -285,11 +249,11 @@
       <h2 class="sec-h">Alles over de pakketten</h2>
     </div>
     <div class="faq-panel">
-    <div class="faq-item"><div class="faq-q">Wat zit er precies in het pakket?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div class="faq-a">Dat hangt af van het gekozen pakket. Starter is compact en gericht op professioneel online zichtbaar zijn. Professioneel biedt meer pagina’s, tekstuitwerking en contactmogelijkheden. Volledig ontzorgd bevat extra begeleiding, meer correctieruimte en tijdelijk websitebeheer &amp; onderhoud.</div></div>
-    <div class="faq-item"><div class="faq-q">Wat zit er in websitebeheer &amp; onderhoud?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div class="faq-a">Websitebeheer &amp; onderhoud is optioneel en bestaat uit hosting, technisch onderhoud, back-ups, veiligheidsupdates en kleine tekst- of beeldwijzigingen. Zo blijft je website goed werken en hoef jij je niet bezig te houden met de technische kant.</div></div>
+    <div class="faq-item"><div class="faq-q">Wat zit er precies in het pakket?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div class="faq-a">Dat hangt af van het gekozen pakket. Starter bevat 1 professionele webpagina, een contactformulier, een mobielvriendelijk ontwerp, basis SEO en een eerste concept binnen 5 werkdagen. Professioneel bouwt daarop verder met extra pagina’s, WhatsApp, Google Maps, een projectenpagina of fotogalerij, uitgebreide SEO en dynamische elementen. Volledig ontzorgd voegt daar extra maatwerk en 3 maanden technisch onderhoud aan toe.</div></div>
+    <div class="faq-item"><div class="faq-q">Wat zit er in 3 maanden technisch onderhoud?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div class="faq-a">3 maanden technisch onderhoud is inbegrepen bij Volledig ontzorgd. Daarmee zorgen we in de eerste periode na oplevering dat je website technisch goed blijft werken.</div></div>
     <div class="faq-item"><div class="faq-q">Hoe snel is mijn website online?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div class="faq-a">Bij complete input ontvang je binnen 5 werkdagen een eerste conceptversie. De uiteindelijke livegang hangt af van feedback, definitieve content, domein en eventuele extra wensen.</div></div>
-    <div class="faq-item"><div class="faq-q">Is websitebeheer &amp; onderhoud verplicht?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div class="faq-a">Nee, websitebeheer &amp; onderhoud is optioneel. Kies je hiervoor, dan regelen wij hosting, technisch onderhoud, back-ups, veiligheidsupdates en kleine tekst- of beeldwijzigingen vanaf €49 per maand.</div></div>
-    <div class="faq-item"><div class="faq-q">Kan ik later upgraden naar een groter pakket?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div class="faq-a">Ja, dat kan. Je kunt starten met een compact pakket en later uitbreiden met extra pagina’s, functies of websitebeheer.</div></div>
+    <div class="faq-item"><div class="faq-q">Is technisch onderhoud verplicht?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div class="faq-a">Nee. Technisch onderhoud is alleen inbegrepen bij Volledig ontzorgd, voor 3 maanden.</div></div>
+    <div class="faq-item"><div class="faq-q">Kan ik later upgraden naar een groter pakket?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div class="faq-a">Ja, dat kan. Je kunt starten met Starter en later uitbreiden naar Professioneel of Volledig ontzorgd.</div></div>
     <div class="faq-item"><div class="faq-q">Moet ik zelf teksten aanleveren?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div class="faq-a">Je hoeft geen perfecte teksten aan te leveren. Op basis van jouw input helpen we met duidelijke teksten die passen bij jouw bedrijf en doelgroep.</div></div>
     </div>
   </div>
@@ -309,7 +273,7 @@
   </div>
   <div class="footer-bottom"><div class="footer-copy">© 2026 123zzpwebsite.nl. Alle rechten voorbehouden.</div></div>
 </footer>
-<a href="https://wa.me/31618802551" target="_blank" rel="noopener noreferrer" class="chat-float" aria-label="Open WhatsApp chat"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><div class="chat-dot"></div></a>
+<a href="https://wa.me/31618802551?text=Hallo%20Jordy%2C%20ik%20wil%20graag%20meer%20weten%20over%20een%20website%20voor%20mijn%20bedrijf." target="_blank" rel="noopener noreferrer" class="chat-float" aria-label="WhatsApp ons"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 <script src="shared.js"></script>
 </body>
 </html>

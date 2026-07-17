@@ -131,10 +131,15 @@ textarea.fi{resize:none;height:100px}
 html.js-reveal .reveal:not(.in){opacity:0;transform:translateY(12px);transition:opacity .48s var(--ease-out),transform .48s var(--ease-out);transition-delay:var(--reveal-delay,0ms)}
 html.js-reveal .reveal.in{opacity:1;transform:translateY(0)}
 html.js-reveal .reveal-stagger > .reveal{transition-delay:var(--reveal-delay,0ms)}
-.chat-float{position:fixed;bottom:24px;right:24px;z-index:200;width:50px;height:50px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(240,98,10,0.4);cursor:pointer;transition:transform .2s}
-.chat-float:hover{transform:scale(1.08)}
-.chat-float svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.chat-dot{position:absolute;top:2px;right:2px;width:11px;height:11px;border-radius:50%;background:#2ECC71;border:2px solid var(--navy)}
+.chat-float{position:fixed;bottom:24px;right:24px;z-index:200;width:50px;height:50px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,0.32);cursor:pointer;transition:transform .2s,box-shadow .2s}
+.chat-float:hover{transform:scale(1.06);box-shadow:0 6px 20px rgba(37,211,102,0.38)}
+.chat-float:focus-visible{outline:2px solid #25D366;outline-offset:3px}
+.chat-float svg{width:22px;height:22px;fill:#fff;stroke:none}
+.chat-float .chat-dot{display:none}
+.cc-card-wa{cursor:pointer}
+.cc-card-wa .cc-icon{background:rgba(37,211,102,0.1);border-color:rgba(37,211,102,0.25)}
+.cc-card-wa .cc-icon svg{stroke:none;fill:#25D366;width:20px;height:20px}
+.cc-card-wa:focus-visible{outline:2px solid #25D366;outline-offset:2px}
 footer{background:linear-gradient(180deg,#080f18 0%,#060D18 100%);border-top:1px solid var(--border-dark);padding:52px 40px 28px;position:relative;z-index:1;box-shadow:0 -8px 32px rgba(0,0,0,0.2)}
 .footer-grid{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:52px;margin-bottom:40px}
 .footer-brand{margin-bottom:4px}
@@ -161,6 +166,8 @@ footer{background:linear-gradient(180deg,#080f18 0%,#060D18 100%);border-top:1px
 @media(hover:hover){
 .case-card:hover,.trust-card:hover,.featured-card:hover,.p-card:hover,.review-card:hover,.vc:hover,.founder-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(11,18,32,0.1);border-color:rgba(11,18,32,0.14)}
 .cc-card:hover{transform:translateX(3px);border-color:rgba(11,18,32,0.16);box-shadow:var(--shadow-card)}
+.cc-card-wa:hover{border-color:rgba(37,211,102,0.35);box-shadow:0 4px 20px rgba(37,211,102,0.12)}
+.cc-card-wa:hover .cc-icon{background:rgba(37,211,102,0.16);border-color:rgba(37,211,102,0.35)}
 .availability-card:hover,.jordy-card:hover{box-shadow:var(--shadow-card);border-color:rgba(11,18,32,0.14)}
 }
 .case-img-inner,.feat-img-inner{overflow:hidden}
