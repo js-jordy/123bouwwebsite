@@ -435,8 +435,19 @@
         <div class="cta-trust-pills"><span class="cta-pill">Vrijblijvend advies</span><span class="cta-pill">Binnen 24u reactie</span><span class="cta-pill">Persoonlijk contact</span></div>
         <div class="cta-quote"><p>"Heldere communicatie, snel schakelen en een uitstraling die direct vertrouwen geeft."</p><span>Gebouwd voor ZZP'ers en groeiende ondernemers</span></div>
       </div>
-      <form class="cta-right" name="contact" method="POST" data-netlify="true" netlify>
+      <form class="cta-right" name="contact" method="POST" data-netlify="true" netlify data-netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="contact">
+        <p hidden aria-hidden="true">
+          <label>
+            Laat dit veld leeg:
+            <input
+              type="text"
+              name="bot-field"
+              tabindex="-1"
+              autocomplete="off"
+            >
+          </label>
+        </p>
         <div class="form-title">Stuur ons een bericht</div>
         <div class="form-sub-txt">We reageren binnen 24 uur.</div>
         <div class="form-row"><div class="fg"><label class="fl" for="naam">Naam</label><input type="text" class="fi" id="naam" name="naam" placeholder="Jan de Vries"></div><div class="fg"><label class="fl" for="e-mail">E-mail</label><input type="email" class="fi" id="e-mail" name="e-mail" placeholder="jan@bedrijf.nl"></div></div>

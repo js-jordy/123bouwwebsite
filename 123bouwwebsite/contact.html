@@ -214,8 +214,19 @@
     </div>
     <div class="form-card reveal">
       <div class="form-top"><div class="form-title-text">Vertel kort wat je zoekt</div><div class="form-sub-text">Of je nu een nieuwe website wilt of je huidige site wilt verbeteren: ik reageer binnen 24 uur.</div></div>
-      <form class="form-body" name="contact" method="POST" data-netlify="true" netlify>
+      <form class="form-body" name="contact" method="POST" data-netlify="true" netlify data-netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="contact">
+        <p hidden aria-hidden="true">
+          <label>
+            Laat dit veld leeg:
+            <input
+              type="text"
+              name="bot-field"
+              tabindex="-1"
+              autocomplete="off"
+            >
+          </label>
+        </p>
         <div class="form-row"><div class="fg"><label class="fl">Naam</label><input type="text" class="fi" name="naam" placeholder="Jan de Vries"></div><div class="fg"><label class="fl">E-mail</label><input type="email" class="fi" name="e-mail" placeholder="jan@bedrijf.nl"></div></div>
         <div class="form-row"><div class="fg"><label class="fl">Telefoonnummer</label><input type="tel" class="fi" name="telefoon" placeholder="06 12 34 56 78"></div><div class="fg"><label class="fl">Bedrijfsnaam</label><input type="text" class="fi" name="bedrijfsnaam" placeholder="Jouw bedrijfsnaam"></div></div>
         <div class="fg"><label class="fl">Website URL (optioneel)</label><input type="url" class="fi" name="website" placeholder="www.jouwbedrijf.nl"></div>
