@@ -1,0 +1,307 @@
+name: Weekly Security Audit
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 17 * * 0'
+      timezone: 'Europe/Amsterdam'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: weekly-security-audit
+  cancel-in-progress: false
+
+jobs:
+  security-audit:
+    name: Weekly Security Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        id: checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Prepare scan directory
+        if: ${{ !cancelled() && steps.checkout.conclusion == 'success' }}
+        run: mkdir -p "${RUNNER_TEMP}/security-scan"
+
+      - name: Scan secrets with Gitleaks
+        id: gitleaks
+        if: ${{ !cancelled() && steps.checkout.conclusion == 'success' }}
+        continue-on-error: true
+        uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_ENABLE_UPLOAD_ARTIFACT: false
+          GITLEAKS_ENABLE_COMMENTS: false
+
+      - name: Record Gitleaks status
+        if: ${{ !cancelled() && steps.checkout.conclusion == 'success' && steps.gitleaks.conclusion != 'skipped' }}
+        run: |
+          set -euo pipefail
+          mkdir -p "${RUNNER_TEMP}/security-scan"
+          EXIT_CODE='${{ steps.gitleaks.outputs.exit-code }}'
+          OUTCOME='${{ steps.gitleaks.outcome }}'
+          CONCLUSION='${{ steps.gitleaks.conclusion }}'
+          secrets_detected=unknown
+          scanner_error=true
+
+          case "${EXIT_CODE}" in
+            0)
+              secrets_detected=false
+              scanner_error=false
+              ;;
+            2)
+              secrets_detected=true
+              scanner_error=false
+              ;;
+            '')
+              EXIT_CODE=missing
+              secrets_detected=unknown
+              scanner_error=true
+              ;;
+            *)
+              secrets_detected=unknown
+              scanner_error=true
+              ;;
+          esac
+
+          {
+            echo "outcome=${OUTCOME}"
+            echo "conclusion=${CONCLUSION}"
+            echo "exit_code=${EXIT_CODE}"
+            echo "secrets_detected=${secrets_detected}"
+            echo "scanner_error=${scanner_error}"
+          } > "${RUNNER_TEMP}/security-scan/gitleaks-status.txt"
+
+      - name: Collect Gitleaks SARIF
+        if: ${{ !cancelled() && steps.checkout.conclusion == 'success' && steps.gitleaks.conclusion != 'skipped' }}
+        run: |
+          set -euo pipefail
+          mkdir -p "${RUNNER_TEMP}/security-scan"
+          if [ -z "${GITHUB_WORKSPACE}" ]; then
+            echo "GITHUB_WORKSPACE is empty; skipping SARIF collect" >&2
+            exit 0
+          fi
+          SRC="${GITHUB_WORKSPACE}/results.sarif"
+          DST="${RUNNER_TEMP}/security-scan/gitleaks-results.sarif"
+          if [ -f "${SRC}" ]; then
+            cp "${SRC}" "${DST}"
+            rm -f "${SRC}"
+            echo "Copied and removed workspace results.sarif"
+          else
+            echo "No results.sarif present in workspace"
+          fi
+
+      - name: Run deterministic security checks
+        id: deterministic_checks
+        if: ${{ !cancelled() && steps.checkout.conclusion == 'success' }}
+        continue-on-error: true
+        run: bash .github/security-audit/run-checks.sh
+
+      - name: Record deterministic checks status
+        if: ${{ !cancelled() && steps.checkout.conclusion == 'success' && steps.deterministic_checks.conclusion != 'skipped' }}
+        run: |
+          set -euo pipefail
+          mkdir -p "${RUNNER_TEMP}/security-scan"
+          OUTCOME='${{ steps.deterministic_checks.outcome }}'
+          if [ "${OUTCOME}" = "success" ]; then
+            scanner_error=false
+          else
+            scanner_error=true
+          fi
+          {
+            echo "outcome=${OUTCOME}"
+            echo "conclusion=${{ steps.deterministic_checks.conclusion }}"
+            echo "scanner_error=${scanner_error}"
+          } > "${RUNNER_TEMP}/security-scan/deterministic-checks-status.txt"
+
+      - name: Require CURSOR_API_KEY
+        id: require_api_key
+        if: ${{ !cancelled() && steps.checkout.conclusion == 'success' }}
+        continue-on-error: true
+        env:
+          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
+        run: |
+          set -euo pipefail
+          mkdir -p "${RUNNER_TEMP}/security-scan"
+          if [ -z "${CURSOR_API_KEY}" ]; then
+            echo "api_key_present=false" > "${RUNNER_TEMP}/security-scan/cursor-api-key-status.txt"
+            {
+              echo "# Weekly Security Audit"
+              echo
+              echo "Technical failure: repository secret CURSOR_API_KEY is not configured."
+              echo
+              echo "Deterministic scan output follows. Cursor CLI did not run."
+              echo
+              for f in "${RUNNER_TEMP}/security-scan"/*.txt "${RUNNER_TEMP}/security-scan"/*.sarif; do
+                [ -f "$f" ] || continue
+                echo "### $(basename "$f")"
+                echo
+                echo '```'
+                cat "$f"
+                echo
+                echo '```'
+                echo
+              done
+            } >> "${GITHUB_STEP_SUMMARY}"
+            echo "Missing repository secret CURSOR_API_KEY" >&2
+            exit 1
+          fi
+          echo "api_key_present=true" > "${RUNNER_TEMP}/security-scan/cursor-api-key-status.txt"
+
+      - name: Install Cursor CLI
+        id: install_cursor
+        if: ${{ !cancelled() && steps.checkout.conclusion == 'success' && steps.require_api_key.outcome == 'success' }}
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          curl https://cursor.com/install -fsS | bash
+          echo "${HOME}/.local/bin" >> "${GITHUB_PATH}"
+          echo "${HOME}/.cursor/bin" >> "${GITHUB_PATH}"
+          export PATH="${HOME}/.local/bin:${HOME}/.cursor/bin:${PATH}"
+          agent --version
+
+      - name: Generate security report with Cursor CLI
+        id: cursor_report
+        if: ${{ !cancelled() && steps.checkout.conclusion == 'success' && steps.require_api_key.outcome == 'success' && steps.install_cursor.outcome == 'success' }}
+        continue-on-error: true
+        env:
+          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
+        run: |
+          set -euo pipefail
+          SCAN_DIR="${RUNNER_TEMP}/security-scan"
+          REPORT="${SCAN_DIR}/security-report.md"
+          PROMPT_FILE="${SCAN_DIR}/cursor-prompt.md"
+          mkdir -p "${SCAN_DIR}"
+
+          {
+            cat .github/security-audit/prompt.md
+            echo
+            echo "---"
+            echo "Runtime context"
+            echo "Repository: ${GITHUB_REPOSITORY}"
+            echo "Commit: ${GITHUB_SHA}"
+            echo "Date (UTC): $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "Scan directory: ${SCAN_DIR}"
+            echo "Gitleaks status file: ${SCAN_DIR}/gitleaks-status.txt"
+            echo "Gitleaks SARIF file: ${SCAN_DIR}/gitleaks-results.sarif"
+            echo "Deterministic checks status file: ${SCAN_DIR}/deterministic-checks-status.txt"
+            echo
+            echo "Interpret the attached scan files. Do not modify the repository."
+            echo
+            for f in "${SCAN_DIR}"/*.txt; do
+              [ -f "$f" ] || continue
+              echo "===== $(basename "$f") ====="
+              cat "$f"
+              echo
+            done
+            if [ -f "${SCAN_DIR}/gitleaks-results.sarif" ]; then
+              echo "===== gitleaks-results.sarif ====="
+              cat "${SCAN_DIR}/gitleaks-results.sarif"
+              echo
+            else
+              echo "===== gitleaks-results.sarif ====="
+              echo "NOT_PRESENT"
+              echo
+            fi
+          } > "${PROMPT_FILE}"
+
+          set +e
+          agent -p --mode=ask --trust --output-format text "$(cat "${PROMPT_FILE}")" > "${REPORT}"
+          agent_ec=$?
+          set -e
+
+          if [ -s "${REPORT}" ]; then
+            echo "report_present=true" > "${SCAN_DIR}/cursor-status.txt"
+          else
+            echo "report_present=false" > "${SCAN_DIR}/cursor-status.txt"
+          fi
+          echo "agent_exit_code=${agent_ec}" >> "${SCAN_DIR}/cursor-status.txt"
+
+          if [ "${agent_ec}" -ne 0 ] || [ ! -s "${REPORT}" ]; then
+            echo "outcome=failure" >> "${SCAN_DIR}/cursor-status.txt"
+            {
+              echo "# Weekly Security Audit"
+              echo
+              echo "Technical failure: Cursor CLI did not produce a security report (exit ${agent_ec})."
+              echo
+              echo "Deterministic scan output follows."
+              echo
+              for f in "${SCAN_DIR}"/*.txt "${SCAN_DIR}"/*.sarif; do
+                [ -f "$f" ] || continue
+                echo "### $(basename "$f")"
+                echo
+                echo '```'
+                cat "$f"
+                echo
+                echo '```'
+                echo
+              done
+            } >> "${GITHUB_STEP_SUMMARY}"
+            echo "Cursor CLI failed to generate a report" >&2
+            exit 1
+          fi
+
+          echo "outcome=success" >> "${SCAN_DIR}/cursor-status.txt"
+          cat "${REPORT}" >> "${GITHUB_STEP_SUMMARY}"
+
+      - name: Final security audit status
+        if: ${{ always() && !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          SCAN_DIR="${RUNNER_TEMP}/security-scan"
+          REPORT="${SCAN_DIR}/security-report.md"
+
+          fail_audit() {
+            echo "$1" >&2
+            echo "$1" >> "${GITHUB_STEP_SUMMARY}"
+            exit 1
+          }
+
+          if [ "${{ steps.checkout.conclusion }}" != "success" ]; then
+            fail_audit "Security audit failed: repository checkout failed."
+          fi
+
+          GITLEAKS_FILE="${SCAN_DIR}/gitleaks-status.txt"
+          if [ ! -f "${GITLEAKS_FILE}" ]; then
+            fail_audit "Security audit failed: Gitleaks scanner error."
+          fi
+
+          gitleaks_exit="$(awk -F= '/^exit_code=/ { print $2; exit }' "${GITLEAKS_FILE}")"
+          gitleaks_secrets="$(awk -F= '/^secrets_detected=/ { print $2; exit }' "${GITLEAKS_FILE}")"
+          gitleaks_error="$(awk -F= '/^scanner_error=/ { print $2; exit }' "${GITLEAKS_FILE}")"
+
+          if [ "${gitleaks_secrets}" = "true" ] || [ "${gitleaks_exit}" = "2" ]; then
+            fail_audit "Security audit failed: Gitleaks detected one or more secrets."
+          fi
+
+          if [ "${gitleaks_error}" = "true" ] || [ "${gitleaks_exit}" = "1" ] || [ "${gitleaks_exit}" = "missing" ] || [ "${gitleaks_exit}" != "0" ]; then
+            fail_audit "Security audit failed: Gitleaks scanner error."
+          fi
+
+          CHECKS_FILE="${SCAN_DIR}/deterministic-checks-status.txt"
+          if [ ! -f "${CHECKS_FILE}" ]; then
+            fail_audit "Security audit failed: deterministic checks crashed."
+          fi
+          checks_error="$(awk -F= '/^scanner_error=/ { print $2; exit }' "${CHECKS_FILE}")"
+          if [ "${checks_error}" != "false" ]; then
+            fail_audit "Security audit failed: deterministic checks crashed."
+          fi
+
+          if [ "${{ steps.require_api_key.outcome }}" != "success" ]; then
+            fail_audit "Security audit failed: CURSOR_API_KEY is missing."
+          fi
+
+          if [ "${{ steps.install_cursor.outcome }}" != "success" ] || [ "${{ steps.cursor_report.outcome }}" != "success" ] || [ ! -s "${REPORT}" ]; then
+            fail_audit "Security audit failed: Cursor report generation failed."
+          fi
+
+          echo "Security audit completed successfully."
+          exit 0

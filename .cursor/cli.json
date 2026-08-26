@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(**/*)",
+      "Read(/home/runner/work/_temp/**)",
+      "Read(/tmp/**)",
+      "Shell(ls)",
+      "Shell(cat)",
+      "Shell(head)",
+      "Shell(grep)",
+      "Shell(rg)",
+      "Shell(find)"
+    ],
+    "deny": [
+      "Write(**)",
+      "Write(*)",
+      "Write(/tmp/**)",
+      "Write(/home/runner/work/_temp/**)",
+      "Write(/home/runner/**)",
+      "Shell(git)",
+      "Shell(gh)",
+      "Shell(npm)",
+      "Shell(npx)",
+      "Shell(bun)",
+      "Shell(yarn)",
+      "Shell(pnpm)",
+      "Shell(netlify)",
+      "Shell(ssh)",
+      "Shell(scp)",
+      "Shell(rm)",
+      "Shell(mv)",
+      "Shell(cp)",
+      "Shell(chmod)",
+      "Shell(curl)",
+      "Shell(wget)",
+      "WebFetch(*)",
+      "Mcp(*:*)"
+    ]
+  }
+}
